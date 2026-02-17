@@ -86,6 +86,12 @@ public class PlayerStat : MonoBehaviour
 
         unitsToDespawn+= lost;
         FlashEffect(Color.red);
+        
+        // check for death
+        if (currentHealth <= 0)
+        {
+            PlayerRagdoll.Instance.ActivateRagdoll();
+        }
     }
 
     public void SetMaxHealth(int newMaxHealth)

@@ -20,7 +20,7 @@ public class PlayerController : MonoBehaviour
     private float _maxTurnAmount = 60f;
     private Vector2 _wishTurnVector = new Vector2();
 
-    private float _velocity;
+    private float _velocity; public float GetVelocity() { return _velocity; }
 
     [SerializeField]
     private float _maxSpeed = 15f;
