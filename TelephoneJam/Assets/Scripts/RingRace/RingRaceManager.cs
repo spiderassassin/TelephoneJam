@@ -66,6 +66,7 @@ namespace RingRace
             
             startRing.gameObject.SetActive(false);
             raceRings[1].gameObject.SetActive(true);
+            HandlePickupsForRace(startRing.GetRaceID(), true);
             
             // Start a timer for the race using the time limit from the start ring, and display it on the UI
             StartCoroutine(RaceTimer(startRing.GetRaceTimeLimit()));
@@ -77,6 +78,19 @@ namespace RingRace
             _currentRaceID = startRing.GetRaceID();
             
             
+        }
+
+        private void HandlePickupsForRace(int raceID, bool enable)
+        {
+            // loop through the world, and find all of the HealthModifierScript that have a matching ringRaceID, and enable them
+            HealthModifierScript[] pickups = FindObjectsOfType<HealthModifierScript>(true);
+            foreach (HealthModifierScript pickup in pickups)
+            {
+                if (pickup.GetComponent<HealthModifierScript>().GetRingRaceID() == raceID)
+                {
+                    pickup.gameObject.SetActive(enable);
+                }
+            }
         }
 
         private IEnumerator RaceTimer(float timeLimit)
@@ -108,6 +122,7 @@ namespace RingRace
                 _player.GetComponent<PlayerStat>().ReduceHealth(2);
                 ResetRace(_currentRaceID);
             }
+            HandlePickupsForRace(_currentRaceID, false);
             RingRaceUIManager.Instance.UpdateTimeRemaining(-1);
             _currentRaceID = -1;
         }
