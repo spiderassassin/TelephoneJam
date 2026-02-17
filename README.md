@@ -12,3 +12,8 @@ Log
   * You can Heal, Take Damage, and increase Max health using the following public functions from the Player Stat script (which is attached to the player). Heal = HealHealth(int amount), Damage = ReduceHealth(int amount), Set a new Max Health = SetMaxHealth(int newMaxHealth)
   * There are capsule which demonstrates how to use the function; those capsules are attached with the HealthModifierScript, where you can specify which kind of effect you want in the OnTrigger
   * Additional Modification tips: If you want to change the Health Points themselves, use the Health Unit prefab. If you want to change the spacing between health points, use the Player Stat script
+ 
+* Notes for Dev 4
+  * Implemented a new flight camera as well as flight mechanics, focusing on boosts for going down as well as for being near objects
+  * Click and hold any mouse button to rotate the camera, double click to lock the mouse
+  * I love flying
