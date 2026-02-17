@@ -95,28 +95,41 @@ public class HealthModifierScript : MonoBehaviour
             normal = { textColor = Color.white },
             alignment = TextAnchor.MiddleCenter,
             fontStyle = FontStyle.Bold,
-            fontSize = 24
+            fontSize = 12
         };
 
         string label = "RaceId: " + ringRaceID.ToString();
         Handles.Label(transform.position + Vector3.up * 0.75f, label, style);
         
         // draw a line between the pickup, and the Start ring of the raceID it belongs to for better visualization
-            HealthModifierScript[] pickups = FindObjectsOfType<HealthModifierScript>(true);
-            foreach (HealthModifierScript pickup in pickups)
+        HealthModifierScript[] pickups = FindObjectsOfType<HealthModifierScript>(true);
+        foreach (HealthModifierScript pickup in pickups)
+        {
+            if (pickup.GetRingRaceID() == ringRaceID)
             {
-                if (pickup.GetRingRaceID() == ringRaceID)
+                RingBase[] rings = FindObjectsOfType<RingBase>(true);
+                RingBase closestRing = null;
+                float closestDistance = float.MaxValue;
+
+                foreach (RingBase ring in rings)
                 {
-                    // find the start ring of this raceID
-                    RingBase[] rings = FindObjectsOfType<RingBase>(true);
-                    foreach (RingBase ring in rings)
+                    if (ring.GetRaceID() != ringRaceID) continue;
+
+                    float distance = Vector3.Distance(pickup.transform.position, ring.transform.position);
+                    if (distance < closestDistance)
                     {
-                        if (ring.GetRingType() == RingType.Start && ring.GetRaceID() == ringRaceID)
-                        {
-                            Handles.DrawLine(transform.position, ring.transform.position);
-                        }
+                        closestDistance = distance;
+                        closestRing = ring;
                     }
                 }
+
+                if (closestRing != null)
+                {
+                    float alpha = Mathf.Clamp01(1f - (closestDistance / 40f));
+                    Handles.color = new Color(1f, 1f, 1f, alpha);
+                    Handles.DrawLine(pickup.transform.position, closestRing.transform.position);
+                }
             }
+        }
     }
 }
