@@ -15,7 +15,7 @@ namespace RingRace
     public class RingBase : MonoBehaviour
     {
         [Header("Ring Settings")]
-        [SerializeField] private RingType _ringType = RingType.Start;
+        [SerializeField] private RingType _ringType = RingType.Start; public RingType GetRingType() { return _ringType; }
         [SerializeField] private int raceID = 0; public int GetRaceID() { return raceID; }
         [SerializeField] private float RaceTimeLimit = 10f; public float GetRaceTimeLimit() { return RaceTimeLimit; }
 
@@ -96,9 +96,38 @@ namespace RingRace
                 fontSize = 24
             };
 
-            // set the label text based on the ring type
             string label = _ringType.ToString();
             Handles.Label(transform.position, label, style);
+
+            RingBase[] rings = FindObjectsOfType<RingBase>(true);
+            RingBase nextRing = null;
+
+            if (_ringType == RingType.Start)
+            {
+                nextRing = Array.Find(rings, ring => ring.GetRaceID() == raceID && ring.GetCheckpointID() == 1);
+            }
+            else if (_ringType == RingType.Checkpoint)
+            {
+                nextRing = Array.Find(rings,
+                    ring => ring.GetRaceID() == raceID && ring.GetCheckpointID() == checkpointID + 1);
+            }
+
+            // Fallback to Finish ring if no next checkpoint found
+            if (nextRing == null && _ringType != RingType.Finish)
+            {
+                nextRing = Array.Find(rings,
+                    ring => ring.GetRaceID() == raceID && ring.GetRingType() == RingType.Finish);
+            }
+
+            // Draw the line
+            if (nextRing != null)
+            {
+                Gizmos.color = Color.blue;
+                Gizmos.DrawLine(transform.position, nextRing.transform.position);
+            }
         }
+        
+
+        
     }
 }

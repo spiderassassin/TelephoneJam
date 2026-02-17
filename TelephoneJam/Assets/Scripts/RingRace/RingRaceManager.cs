@@ -21,9 +21,39 @@ namespace RingRace
             Instance = this;
             DontDestroyOnLoad(gameObject);
         }
+        
+        
+        // Global things for each of the races / rings
+        [SerializeField] AudioClip RaceStartSFX;
+        [SerializeField] AudioClip CheckpointSFX;
+        [SerializeField] AudioClip FinishWinSFX;
+        [SerializeField] AudioClip FinishLoseSFX;
+        
+        private AudioSource audioSource;
+        private GameObject _player;
+        
+        private int _currentRaceID = -1;
+        
 
+
+        private void Start()
+        {
+            // get the player
+            _player = GameObject.FindGameObjectWithTag("Player");
+            audioSource = _player.GetComponent<AudioSource>();
+            
+        }
+        
         public void RequestStartRace(RingBase startRing)
         {
+            
+            // if we are already in a race, we dont want to start another
+            if (_currentRaceID != -1)
+            {
+                Debug.LogWarning("Already in a race, cannot start another!");
+                return;
+            }
+
             // get access to all of the RingBase components in the scene (search inactive too), that having a matching raceID, and then sort them by their checkpointID
             // where the Start will have a checkpointID of 0, and the finish will have a checkpoint ID of -1.
             // so the end order of the rings will be Start (0), Checkpoint 1 (1), Checkpoint 2 (2), Checkpoint 3 (3), Finish (max value)
@@ -39,6 +69,12 @@ namespace RingRace
             
             // Start a timer for the race using the time limit from the start ring, and display it on the UI
             StartCoroutine(RaceTimer(startRing.GetRaceTimeLimit()));
+            
+            if (RaceStartSFX != null)
+            {
+                audioSource.PlayOneShot(RaceStartSFX);
+            }
+            _currentRaceID = startRing.GetRaceID();
             
             
         }
@@ -62,13 +98,38 @@ namespace RingRace
         {
             if (finished)
             {
-                Debug.Log("Player finished the race!");
+                if (FinishWinSFX != null) { audioSource.PlayOneShot(FinishWinSFX); } 
+                _player.GetComponent<PlayerStat>().HealHealth(1);
             }
             else
             {
-                Debug.Log("Player failed to finish the race in time!");
+                if (FinishLoseSFX != null) { audioSource.PlayOneShot(FinishLoseSFX); }
+                // Damage the player here, and reset the Start ring
+                _player.GetComponent<PlayerStat>().ReduceHealth(2);
+                ResetRace(_currentRaceID);
             }
             RingRaceUIManager.Instance.UpdateTimeRemaining(-1);
+            _currentRaceID = -1;
+        }
+
+        private void ResetRace(int raceID)
+        {
+            // get access to all of the RingBase components in the scene (search inactive too), that have the same race id, and are of type Start
+            RingBase[] rings = FindObjectsOfType<RingBase>(true);
+            // get all rings with the same raceID
+            RingBase[] raceRings = System.Array.FindAll(rings, ring => ring.GetRaceID() == raceID);
+            foreach (RingBase ring in raceRings)
+            {
+                if (ring.GetCheckpointID() == int.MinValue)
+                {
+                    ring.gameObject.SetActive(true);
+                }
+                else
+                {
+                    ring.gameObject.SetActive(false);
+                }
+            }
+            
         }
 
         public void CheckpointReached(int raceID, int checkpointID)
@@ -98,6 +159,11 @@ namespace RingRace
                 if (currentRing != null)
                 {
                     currentRing.gameObject.SetActive(false);
+                }
+                
+                if (CheckpointSFX != null)
+                {
+                    audioSource.PlayOneShot(CheckpointSFX);
                 }
 
         }
