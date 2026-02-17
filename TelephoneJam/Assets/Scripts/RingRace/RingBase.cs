@@ -17,6 +17,7 @@ namespace RingRace
         [Header("Ring Settings")]
         [SerializeField] private RingType _ringType = RingType.Start;
         [SerializeField] private int raceID = 0; public int GetRaceID() { return raceID; }
+        [SerializeField] private float RaceTimeLimit = 10f; public float GetRaceTimeLimit() { return RaceTimeLimit; }
 
         // Only show this section in the editor, if the ring type is a checkpoint, as it will be used to determine the order of checkpoints
         

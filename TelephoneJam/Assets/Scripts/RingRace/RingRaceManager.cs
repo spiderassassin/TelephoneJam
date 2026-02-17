@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 namespace RingRace
@@ -35,8 +36,40 @@ namespace RingRace
             
             startRing.gameObject.SetActive(false);
             raceRings[1].gameObject.SetActive(true);
+            
+            // Start a timer for the race using the time limit from the start ring, and display it on the UI
+            StartCoroutine(RaceTimer(startRing.GetRaceTimeLimit()));
+            
+            
         }
 
+        private IEnumerator RaceTimer(float timeLimit)
+        {
+            float timeRemaining = timeLimit;
+            while (timeRemaining > 0)
+            {
+                // update the UI with the time remaining
+                RingRaceUIManager.Instance.UpdateTimeRemaining(timeRemaining);
+                yield return null;
+                timeRemaining -= Time.deltaTime;
+            }
+
+            // if we reach here, that means the player has run out of time, so we need to end the
+            EndRace(false);
+        }
+
+        private void EndRace(bool finished)
+        {
+            if (finished)
+            {
+                Debug.Log("Player finished the race!");
+            }
+            else
+            {
+                Debug.Log("Player failed to finish the race in time!");
+            }
+            RingRaceUIManager.Instance.UpdateTimeRemaining(-1);
+        }
 
         public void CheckpointReached(int raceID, int checkpointID)
         {
@@ -71,8 +104,11 @@ namespace RingRace
         
         public void FinishedReached(RingBase finishRing)
         {
-            // get access to all of the RingBase components in the scene (search inactive too), that
-            Debug.Log("Finished");
+            // stop the timer and end the race
+            StopAllCoroutines();
+            EndRace(true);
+            
+            finishRing.gameObject.SetActive(false);
         }
     }
 }

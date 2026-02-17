@@ -26,7 +26,13 @@ namespace RingRace
         {
             // find the child of this object with the name "TMP_TimeRemaining" and get the TMP_Text component from it, and store it in _timeRemainingText
             _timeRemainingText = transform.Find("TMP_TimeRemaining").GetComponent<TMP_Text>();
-            _timeRemainingText.text = "Time Remaining: 0.00s";
+            _timeRemainingText.text = "";
+        }
+        
+        public void UpdateTimeRemaining(float timeRemaining)
+        {
+            if (timeRemaining == -1){ _timeRemainingText.text = ""; return; }
+            _timeRemainingText.text = $"Time Remaining: {timeRemaining:F2}s";
         }
 
     }
