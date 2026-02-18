@@ -236,7 +236,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f6b69111ea4567748aa6b6dbe6eb7904, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  destructionSFX: {fileID: 8300000, guid: e8ae9c0b46b9eb147b4d3cb228f804e9, type: 3}
+  destructionSFX: {fileID: 8300000, guid: 15570d5ffd32c05468637e69ef2d29ca, type: 3}
   destructionEffectPrefab: {fileID: 0}
   destructionEffectDuration: 1
   health: 5
