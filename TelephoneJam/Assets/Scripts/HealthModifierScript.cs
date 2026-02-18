@@ -51,7 +51,18 @@ public class HealthModifierScript : DestructibleObject
         }
     }
 
-    void OnTriggerEnter(Collider other)
+    public void HandleDestroyed()
+    {
+        // switching to disabling for race ones
+        if (ringRaceID != -1)
+        {
+            Die(shouldDestroy:false);
+            return;
+        }
+
+        Die(shouldDestroy:true);
+    }
+    public void OnTriggerEnter(Collider other)
     {
         if (!other.CompareTag("Player"))
             return;
@@ -74,14 +85,7 @@ public class HealthModifierScript : DestructibleObject
 
         if (destroyOnUse)
         {
-            // switching to disabling for race ones
-            if (ringRaceID != -1)
-            {
-                Die(shouldDestroy:false);
-                return;
-            }
-
-            Die(shouldDestroy:true);
+            HandleDestroyed();
         }
 
     }

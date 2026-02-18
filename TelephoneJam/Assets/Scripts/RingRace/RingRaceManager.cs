@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace RingRace
@@ -9,7 +10,7 @@ namespace RingRace
     public class RingRaceManager : MonoBehaviour
     {
         public static RingRaceManager Instance { get; private set; }
-
+        
         private void Awake()
         {
             if (Instance != null && Instance != this)
@@ -28,7 +29,8 @@ namespace RingRace
         [SerializeField] AudioClip CheckpointSFX;
         [SerializeField] AudioClip FinishWinSFX;
         [SerializeField] AudioClip FinishLoseSFX;
-        
+
+        [SerializeField] private List<GameObject> RingRaces;
         private AudioSource audioSource;
         private GameObject _player;
         
@@ -41,6 +43,12 @@ namespace RingRace
             // get the player
             _player = GameObject.FindGameObjectWithTag("Player");
             audioSource = _player.GetComponent<AudioSource>();
+            
+            // enable all of the ring races
+            foreach (GameObject ringRace in RingRaces)
+            {
+                ringRace.SetActive(true);
+            }
             
         }
         
@@ -76,7 +84,6 @@ namespace RingRace
                 audioSource.PlayOneShot(RaceStartSFX);
             }
             _currentRaceID = startRing.GetRaceID();
-            
             
         }
 

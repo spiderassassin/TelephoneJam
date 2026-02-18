@@ -22,6 +22,13 @@ public class DestructibleObject : MonoBehaviour
         
         if (health <= 0)
         {
+            // try to cast to a health modifier script, if it is one, then we want to trigger the on trigger event instead of just destroying it
+            HealthModifierScript healthModifier = GetComponent<HealthModifierScript>();
+            if (healthModifier)
+            {
+                healthModifier.HandleDestroyed(); // we can pass null here because the player stat modification will be handled in the health modifier script itself
+                return; // we return here because we dont want to call Die() after triggering the on trigger event
+            }
             Die();
         }
     }

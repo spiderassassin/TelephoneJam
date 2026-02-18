@@ -67,7 +67,7 @@ public class LaserFreakingVision : MonoBehaviour
             {
                 // spawn in an instance of the laser hit effect prefab at the mouse world position, so that its normal against the surface it hit
                 ParticleSystem temp = Instantiate(laserHitEffectPrefab, mouseWorldPosition, Quaternion.LookRotation(playerCamera.transform.forward));
-                StartCoroutine(DelayDestroy(0.35f, temp.gameObject));
+                Destroy(temp.gameObject, 0.35f);
             }
             
             
@@ -76,11 +76,7 @@ public class LaserFreakingVision : MonoBehaviour
 
     }
 
-    private IEnumerator DelayDestroy(float delay, GameObject toDestroy)
-    {
-        yield return new WaitForSeconds(delay);
-        Destroy(toDestroy);
-    }
+
 
     private Vector3 GetMouseWorldPosition()
     {
