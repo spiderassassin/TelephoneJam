@@ -22,6 +22,7 @@ Log
   * Implemented a ragdoll system when the player dies (though, the camera dosent follow and there is no respawn lol)
   * Implemented Destructable objects
   * Upgraded the visuals of the health pickups in the level
+  * All pickups (damage and health) now have a RaceID field, which makes them only visible when that specific "race" is active. SET TO -1 TO HAVE THEM BE GLOBAL AND NOT TIED TO A RACE
   * Implemented time trials via "ring races", feel free to look into my pre-built races to see how these work
   * Implemented something secret if you hold LMB
   * Built a prototype level for the game to take place in
