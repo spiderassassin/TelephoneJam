@@ -17,3 +17,14 @@ Log
   * Implemented a new flight camera as well as flight mechanics, focusing on boosts for going down as well as for being near objects
   * Click and hold any mouse button to rotate the camera, double click to lock the mouse
   * I love flying
+
+* Notes for Dev 5
+  * Implemented a ragdoll system when the player dies (though, the camera dosent follow and there is no respawn lol)
+  * Implemented Destructable objects
+  * Upgraded the visuals of the health pickups in the level (they are laggy, im so sorry ;w;)
+  * Implemented time trials via "ring races", feel free to look into my pre-built races to see how these work
+  * Implemented something secret if you press LMB
+  * Built a prototype level for the game to take place in
+  * Accidentally make the startup of the game laggy (I'm sorry again)
+  * Recorded some SLAY audio effects for the secret stuff related to LMB
+  * I also love flying
