@@ -6,7 +6,7 @@ using DG.Tweening;
 using RingRace;
 using UnityEditor;
 
-public class HealthModifierScript : MonoBehaviour
+public class HealthModifierScript : DestructibleObject
 {
 
     public enum EffectType { Heal, Damage, SetMaxHealth }
@@ -77,11 +77,11 @@ public class HealthModifierScript : MonoBehaviour
             // switching to disabling for race ones
             if (ringRaceID != -1)
             {
-                gameObject.SetActive(false);
+                Die(shouldDestroy:false);
                 return;
             }
 
-            Destroy(gameObject);
+            Die(shouldDestroy:true);
         }
 
     }

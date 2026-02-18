@@ -7,12 +7,13 @@ public class LaserFreakingVision : MonoBehaviour
     private LineRenderer _line1;
     private LineRenderer _line2;
 
-    public Transform leftEyeOrigin;
-    public Transform rightEyeOrigin;
-
+    [SerializeField] ParticleSystem laserHitEffectPrefab;
+    [SerializeField] float laserDamage = 0.1f;
+    [SerializeField] AudioClip laserSFX;
+    
     // Assign whichever camera is rendering your scene (usually Main Camera)
     public Camera playerCamera;
-
+    private AudioSource _laserAudioSource;
     void Start()
     {
         _line1 = transform.Find("Line1").GetComponent<LineRenderer>();
@@ -23,6 +24,11 @@ public class LaserFreakingVision : MonoBehaviour
 
         _line1.enabled = false;
         _line2.enabled = false;
+        
+        _laserAudioSource = gameObject.AddComponent<AudioSource>();
+        _laserAudioSource.clip = laserSFX;
+        _laserAudioSource.loop = true;
+        _laserAudioSource.playOnAwake = false;
     }
 
     void Update()
@@ -30,16 +36,17 @@ public class LaserFreakingVision : MonoBehaviour
         
         if (Input.GetMouseButtonDown(0))
         {
-            Debug.Log("Mouse down, enabling lasers");
             _line1.enabled = true;
             _line2.enabled = true;
+            _laserAudioSource.Play();
         }
 
         if (Input.GetMouseButtonUp(0))
         {
-            Debug.Log("Mouse up, disabling lasers");
             _line1.enabled = false;
             _line2.enabled = false;
+            // cancel the laser sound
+            _laserAudioSource.Stop();
         }
         
 
@@ -55,14 +62,24 @@ public class LaserFreakingVision : MonoBehaviour
             
             //TODO: ADD SFX HERE
             
-            //TODO: ADD VFX at the hit position
+            
+            if (laserHitEffectPrefab)
+            {
+                // spawn in an instance of the laser hit effect prefab at the mouse world position, so that its normal against the surface it hit
+                ParticleSystem temp = Instantiate(laserHitEffectPrefab, mouseWorldPosition, Quaternion.LookRotation(playerCamera.transform.forward));
+                StartCoroutine(DelayDestroy(0.35f, temp.gameObject));
+            }
             
             
         }
         
-       
-        
 
+    }
+
+    private IEnumerator DelayDestroy(float delay, GameObject toDestroy)
+    {
+        yield return new WaitForSeconds(delay);
+        Destroy(toDestroy);
     }
 
     private Vector3 GetMouseWorldPosition()
@@ -74,6 +91,11 @@ public class LaserFreakingVision : MonoBehaviour
         if (Physics.Raycast(ray, out RaycastHit hit))
         {
             Debug.DrawRay(ray.origin, ray.direction * hit.distance, Color.green);
+            // check if the thing we hit is a subclass of DestructibleObject
+            if (hit.collider.GetComponent<DestructibleObject>() != null)
+            {
+                hit.collider.GetComponent<DestructibleObject>().TakeDamage(laserDamage);
+            }
             return hit.point;
         }
         // draw a debug ray for visualization
