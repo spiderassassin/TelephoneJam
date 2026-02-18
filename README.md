@@ -25,6 +25,7 @@ Log
   * Implemented time trials via "ring races", feel free to look into my pre-built races to see how these work
   * Implemented something secret if you hold LMB
   * Built a prototype level for the game to take place in
-  * Might have broken some of the cape physics? but I cant tell if that is me or they just clip (im also sorry again again ;w;)
+  * Might have broken some of the cape physics? but I cant tell if that is me or they just clip
   * Recorded some SLAY audio effects for the secret stuff related to LMB
+  * Have fun!!
   * I also love flying
