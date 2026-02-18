@@ -23,8 +23,9 @@ Log
   * Implemented Destructable objects
   * Upgraded the visuals of the health pickups in the level (they are laggy, im so sorry ;w;)
   * Implemented time trials via "ring races", feel free to look into my pre-built races to see how these work
-  * Implemented something secret if you press LMB
+  * Implemented something secret if you hold LMB
   * Built a prototype level for the game to take place in
   * Accidentally make the startup of the game laggy (I'm sorry again)
+  * Might have broken some of the cape physics? but I cant tell if that is me or they just clip (im also sorry again again ;w;)
   * Recorded some SLAY audio effects for the secret stuff related to LMB
   * I also love flying
