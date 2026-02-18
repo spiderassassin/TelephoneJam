@@ -39,8 +39,8 @@ public class MainCamera : MonoBehaviour
     private float _rollAngle;
 
     private bool Looking => _isMouseLook || IsMouseDown;
-    private bool IsMouseDown => Input.GetMouseButton(0) || Input.GetMouseButton(1);
-    private bool IsClicking => Input.GetMouseButtonDown(0) || Input.GetMouseButtonDown(1);
+    private bool IsMouseDown => Input.GetMouseButton(1);
+    private bool IsClicking => Input.GetMouseButtonDown(1);
     // Start is called before the first frame update
     void Start()
     {

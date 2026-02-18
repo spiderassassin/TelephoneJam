@@ -43,6 +43,8 @@ public class PlayerRagdoll : MonoBehaviour
             if (col.gameObject == _player) continue;
             col.enabled = true;
         }
+
+        
         foreach (Rigidbody rb in _player.GetComponentsInChildren<Rigidbody>())
         {
             rb.isKinematic = false;
@@ -65,6 +67,8 @@ public class PlayerRagdoll : MonoBehaviour
         {
             rb.AddForce(forwardVelocity, ForceMode.VelocityChange);
         }
+        
+        //TODO: I need another dev to figure out how to make the camera work here LOL
         
     }
 
