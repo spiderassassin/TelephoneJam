@@ -90,8 +90,14 @@ public class PlayerStat : MonoBehaviour
         // check for death
         if (currentHealth <= 0)
         {
-            PlayerRagdoll.Instance.ActivateRagdoll();
+            PlayerDeath();
         }
+    }
+
+    private void PlayerDeath()
+    {
+        //TODO: Another dev prolly gotta hook this up to some sort of Game Manager to handle respawns or resets
+        PlayerRagdoll.Instance.ActivateRagdoll(); //This also needs to have its camera fixed.. unless we like it LOL
     }
 
     public void SetMaxHealth(int newMaxHealth)

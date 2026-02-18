@@ -93,10 +93,11 @@ namespace RingRace
                 normal = { textColor = Color.white },
                 alignment = TextAnchor.MiddleCenter,
                 fontStyle = FontStyle.Bold,
-                fontSize = 24
+                fontSize = 12
             };
 
-            string label = _ringType.ToString();
+            string label = "Type: " + _ringType.ToString() + "\nRaceId: " + raceID.ToString() +
+                           (_ringType == RingType.Checkpoint ? ("\nCheckpointID: " + checkpointID.ToString()) : "");
             Handles.Label(transform.position, label, style);
 
             RingBase[] rings = FindObjectsOfType<RingBase>(true);

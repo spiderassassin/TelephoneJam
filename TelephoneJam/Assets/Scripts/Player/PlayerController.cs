@@ -164,13 +164,14 @@ public class PlayerController : MonoBehaviour
         transform.localEulerAngles = new Vector3(Mathf.Clamp(_visualTurn.x, -30, 30), Mathf.Clamp(_visualTurn.y, -30, 30), Mathf.Clamp(-_visualTurn.y / 4f, -30, 30));
         _visualTurn =  Vector2.Lerp(_visualTurn, Vector2.zero, Time.deltaTime * 12f);
 
-        var maxSpeed = _velocity < 0 ? _maxSpeed / 4 : _maxSpeed;
+        bool isBoosting = Input.GetKey(KeyCode.LeftShift) || Input.GetKey(KeyCode.RightShift);
+        var maxSpeed = _velocity < 0 ? _maxSpeed / 4 : (isBoosting ? _maxSpeed * 2f : _maxSpeed);
 
 
         if(moveForwards != 0)
         {
             var oldSpeed = Mathf.Abs(_velocity);
-            _velocity += _accel * Time.deltaTime * moveForwards;
+            _velocity += _accel * (isBoosting ? 2f : 1f) * Time.deltaTime * moveForwards;
             if(Mathf.Abs(_velocity) > maxSpeed)
             {
                 if(oldSpeed < maxSpeed)
