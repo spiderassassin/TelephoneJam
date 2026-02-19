@@ -27,9 +27,14 @@ public class GameFlowController : MonoBehaviour
     public float holdTime = 0.10f;
     public float flyOutTime = 0.35f;
 
-    [Header("Audio")]
+    [Header("Audio - SFX")]
     public AudioSource audioSource;
     public AudioClip batman;
+
+    [Header("Audio - Music")]
+    public AudioSource musicSource;
+    public AudioClip backingTrack;
+    public float musicDelay = 1.0f;
 
     bool started;
 
@@ -48,6 +53,13 @@ public class GameFlowController : MonoBehaviour
             titleGroup.interactable = true;
             titleGroup.blocksRaycasts = true;
         }
+
+        if (musicSource && backingTrack)
+        {
+            musicSource.clip = backingTrack;
+            musicSource.loop = true;
+            musicSource.playOnAwake = false;
+        }
     }
 
     public void OnPlayPressed()
@@ -56,10 +68,15 @@ public class GameFlowController : MonoBehaviour
         started = true;
 
         if (playButton) playButton.interactable = false;
-        if (audioSource && batman) audioSource.PlayOneShot(batman);
 
         // thank you for tween :D
         var seq = DOTween.Sequence().SetUpdate(true);
+
+        seq.AppendCallback(() =>
+        {
+            if (audioSource && batman) audioSource.PlayOneShot(batman);
+            if (musicSource && backingTrack) musicSource.PlayDelayed(musicDelay);
+        });
 
         seq.Append(icon.DOAnchorPos(coverCenter, flyInTime).SetEase(Ease.OutCubic));
 
