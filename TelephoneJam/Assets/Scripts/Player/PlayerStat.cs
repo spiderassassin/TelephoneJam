@@ -20,6 +20,8 @@ public class PlayerStat : MonoBehaviour
     [SerializeField] float nextHealthUnitSpawnDist = 1f;
     [SerializeField] float spawnDelay = 0.1f;
 
+    [SerializeField] private HealthPopup healthPopup;
+
 
 
     float timer = 0f;
@@ -70,6 +72,7 @@ public class PlayerStat : MonoBehaviour
         int gained = currentHealth - previousHealth;
         unitsToSpawn += gained;
         FlashEffect(Color.green);
+        if (gained > 0) healthPopup?.ShowHeal();
 
     }
     public void ReduceHealth(int amount)
@@ -86,7 +89,8 @@ public class PlayerStat : MonoBehaviour
 
         unitsToDespawn+= lost;
         FlashEffect(Color.red);
-        
+        if (lost > 0) healthPopup?.ShowDamage();
+
         // check for death
         if (currentHealth <= 0)
         {
@@ -168,7 +172,7 @@ public class PlayerStat : MonoBehaviour
 
         spawnedHealthUnits.Add(spawnedHealthUnit);
         audioSource.PlayOneShot(healthSpawnSFX);
-        
+
     }
 
     private void DespawnLastHealthUnit()
