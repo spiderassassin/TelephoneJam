@@ -39,5 +39,6 @@ Log
   * Created some lore for this world with the death screen - there are also versions of the sheet for Game Win and Game If-You-Don't-Win-Or-Lose (labelled GameMid under Sprites)
   * Created a custom backing track for the game! it loops and stuff woah
   * cape still clips, idk how to fix this.
+  * recorded a SLAY sound effect for the race mode start - didnt have time to implement oops
   * i love dotween THANK YOU FOR DOTWEEN DEV 2
   * I also also love flying
