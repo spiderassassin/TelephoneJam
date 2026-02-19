@@ -34,11 +34,12 @@ Log
 * Notes for Dev 6
   * Added a title screen with a button and an opening stinger! Custom art for the button - there are versions for unselected, hover, press, and selected. Use sprite swap for button implementations!
   * also added sfx for the button 'cracking' although i did not have time to implement it! Find this under Audio/SFX
-  * Speaking of which, created custom art for the opening, health gain and health loss situations LOL
+  * Speaking of which, created custom art for the opening, health gain and health loss situations.
   * also made respawning possible in a very scuffed way (just reloads the scene)
-  * Created some lore for this world with the death screen - there are also versions of the sheet for Game Win and Game If-You-Don't-Win-Or-Lose (labelled GameMid under Sprites)
+  * Created some lore for this world with the Game Over screen (when you lose all your health) - there are also versions of the sheet for Game Win and Game If-You-Don't-Win-Or-Lose (labelled GameMid under Sprites)
   * Created a custom backing track for the game! it loops and stuff woah
   * cape still clips, idk how to fix this.
+  * i also think raycasts are still on for buttons in some instances, oops.
   * recorded a SLAY sound effect for the race mode start - didnt have time to implement oops
   * i love dotween THANK YOU FOR DOTWEEN DEV 2
   * i hope the stuff is useful! Have fun!! :3
