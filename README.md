@@ -41,4 +41,5 @@ Log
   * cape still clips, idk how to fix this.
   * recorded a SLAY sound effect for the race mode start - didnt have time to implement oops
   * i love dotween THANK YOU FOR DOTWEEN DEV 2
+  * i hope the stuff is useful! Have fun!! :3
   * I also also love flying
