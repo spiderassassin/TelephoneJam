@@ -100,8 +100,12 @@ public class PlayerStat : MonoBehaviour
 
     private void PlayerDeath()
     {
-        //TODO: Another dev prolly gotta hook this up to some sort of Game Manager to handle respawns or resets
+        //TODO: Another dev (TWAS DEV 5!) prolly gotta hook this up to some sort of Game Manager to handle respawns or resets
         PlayerRagdoll.Instance.ActivateRagdoll(); //This also needs to have its camera fixed.. unless we like it LOL
+
+        // me likey the way it FLIES LMAOOO
+        GameOverUI.Instance?.Show();
+
     }
 
     public void SetMaxHealth(int newMaxHealth)
