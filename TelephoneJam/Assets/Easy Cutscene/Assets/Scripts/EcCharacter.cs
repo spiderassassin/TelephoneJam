@@ -80,7 +80,6 @@ namespace HisaGames.Character
             switch (characterState)
             {
                 case CharacterState.Moving:
-                    Debug.Log("Supposed to move");
                     GetComponent<RectTransform>().anchoredPosition = Vector3.MoveTowards(GetComponent<RectTransform>().anchoredPosition, targetMovePosition, step);
 
                     if (targetMovePosition == GetComponent<RectTransform>().anchoredPosition)

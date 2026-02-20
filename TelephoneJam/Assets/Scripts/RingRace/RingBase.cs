@@ -24,11 +24,20 @@ namespace RingRace
         [SerializeField, Tooltip("ONLY SET THIS IF ITS A CHECKPOINT")] private int checkpointID = 0; public int GetCheckpointID() { return checkpointID; }
         
         private MeshCollider _collider;
-        
+        private GameObject _player;
+        private AudioSource audioSource;
+
+        [Header("Audio")]
+        public AudioClip raceStartSFX;
+        public float volume = 1f;
+
         private void Start()
         {
             _collider = GetComponent<MeshCollider>();
             _collider.isTrigger = true;
+            
+            _player = GameObject.FindGameObjectWithTag("Player");
+            audioSource = _player.GetComponent<AudioSource>();
 
             if (_ringType == RingType.Checkpoint)
             {
@@ -73,6 +82,7 @@ namespace RingRace
         private void HandleStartRing()
         {
             RingRaceManager.Instance.RequestStartRace(this);
+            audioSource.PlayOneShot(raceStartSFX, volume);
         }
 
         private void HandleCheckpointRing()
