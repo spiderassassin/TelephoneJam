@@ -1,0 +1,53 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &3228553883031517489
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7592395921116682494}
+  - component: {fileID: 7880742175415938410}
+  m_Layer: 0
+  m_Name: RingRaceManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7592395921116682494
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3228553883031517489}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -5.8798018, y: 63.50207, z: 22.930159}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7880742175415938410
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3228553883031517489}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 898af3d33e28f68409c3e2012145ff2e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  RaceStartSFX: {fileID: 8300000, guid: 15570d5ffd32c05468637e69ef2d29ca, type: 3}
+  CheckpointSFX: {fileID: 8300000, guid: 15570d5ffd32c05468637e69ef2d29ca, type: 3}
+  FinishWinSFX: {fileID: 8300000, guid: 15570d5ffd32c05468637e69ef2d29ca, type: 3}
+  FinishLoseSFX: {fileID: 8300000, guid: e0505e1de85064b4e9079018fc710750, type: 3}
+  RingRaces:
+  - {fileID: 0}
+  - {fileID: 0}

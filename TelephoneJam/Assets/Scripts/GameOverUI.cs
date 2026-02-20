@@ -68,7 +68,6 @@ public class GameOverUI : MonoBehaviour
         Time.timeScale = 1f;
 
         DOTween.KillAll();
-        var scene = SceneManager.GetActiveScene();
-        SceneManager.LoadScene(scene.buildIndex);
+        GameManager.Instance.ReloadScene();
     }
 }

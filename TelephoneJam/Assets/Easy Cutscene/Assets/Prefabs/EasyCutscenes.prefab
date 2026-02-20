@@ -9,13 +9,14 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 6574975662670090746}
+  - component: {fileID: 5690034510501332443}
   m_Layer: 0
   m_Name: EcGUI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &6574975662670090746
 RectTransform:
   m_ObjectHideFlags: 0
@@ -37,6 +38,18 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 1920, y: 1080}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!225 &5690034510501332443
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6574975662670090747}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &6574975662692086976
 GameObject:
   m_ObjectHideFlags: 0
@@ -235,7 +248,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Chat Text
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 17eedd5b500c0f0479c2057e7f55b241, type: 2}
   m_sharedMaterial: {fileID: -3481113185578378653, guid: 17eedd5b500c0f0479c2057e7f55b241,
@@ -321,7 +334,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &6574975663053359396
 RectTransform:
   m_ObjectHideFlags: 0
@@ -354,133 +367,98 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cutsceneData:
-  - name: Scene 1A
+  - name: Scene 1
     charactersData:
-    - name: Sample One
+    - name: Walkie
       initialTransformID: Trunk Left
       finalTransformID: Left
-      spriteString: SampleOne_Idle
-    propsData: []
-    nameString: Sample One
-    chatString: Hello!
-    cutscenePreEvent:
-      m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 0}
-          m_TargetAssemblyTypeName: UnityEngine.AudioSource, UnityEngine
-          m_MethodName: PlayOneShot
-          m_Mode: 2
-          m_Arguments:
-            m_ObjectArgument: {fileID: 8300000, guid: 8c9f1e9ead130764ca1cf04c6fba1fe9,
-              type: 3}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.AudioClip, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
-    cutscenePostEvent:
-      m_PersistentCalls:
-        m_Calls: []
-  - name: Scene 1B
-    charactersData:
-    - name: Sample One
-      initialTransformID: Left
-      finalTransformID: Left
-      spriteString: 
-    - name: Sample Two
+      spriteString: walkie_char
+    - name: Hero
       initialTransformID: Trunk Right
       finalTransformID: Right
-      spriteString: SampleTwo_Idle
+      spriteString: hero_char
     propsData: []
-    nameString: Sample Two
-    chatString: Hello, do you know this is just sample dialogue?
+    nameString: Walkie
+    chatString: Hello! Hello!
     cutscenePreEvent:
       m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 0}
-          m_TargetAssemblyTypeName: UnityEngine.AudioSource, UnityEngine
-          m_MethodName: PlayOneShot
-          m_Mode: 2
-          m_Arguments:
-            m_ObjectArgument: {fileID: 8300000, guid: 8c9f1e9ead130764ca1cf04c6fba1fe9,
-              type: 3}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.AudioClip, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
+        m_Calls: []
     cutscenePostEvent:
       m_PersistentCalls:
         m_Calls: []
-  - name: Scene 1C
+  - name: Scene 2
     charactersData:
-    - name: Sample One
+    - name: Walkie
       initialTransformID: Left
       finalTransformID: Left
-      spriteString: SampleOne_Action
-    - name: Sample Two
+      spriteString: walkie_char
+    - name: Hero
       initialTransformID: Right
       finalTransformID: Right
-      spriteString: 
+      spriteString: hero_char
     propsData: []
-    nameString: Sample One
-    chatString: Yeah, i know it.
+    nameString: Walkie
+    chatString: Welcome to the Self Taught Heros Academy!
     cutscenePreEvent:
       m_PersistentCalls:
-        m_Calls:
-        - m_Target: {fileID: 0}
-          m_TargetAssemblyTypeName: UnityEngine.AudioSource, UnityEngine
-          m_MethodName: PlayOneShot
-          m_Mode: 2
-          m_Arguments:
-            m_ObjectArgument: {fileID: 8300000, guid: 8c9f1e9ead130764ca1cf04c6fba1fe9,
-              type: 3}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.AudioClip, UnityEngine
-            m_IntArgument: 0
-            m_FloatArgument: 0
-            m_StringArgument: 
-            m_BoolArgument: 0
-          m_CallState: 2
+        m_Calls: []
     cutscenePostEvent:
       m_PersistentCalls:
         m_Calls: []
-  - name: Scene 1D
+  - name: Scene 3
     charactersData:
-    - name: Sample One
+    - name: Walkie
       initialTransformID: Left
-      finalTransformID: Trunk Right
-      spriteString: SampleOne_Idle
-    - name: Sample Two
+      finalTransformID: Left
+      spriteString: walkie_char
+    - name: Hero
       initialTransformID: Right
-      finalTransformID: Trunk Left
-      spriteString: 
+      finalTransformID: Right
+      spriteString: hero_char
     propsData: []
-    nameString: Narrator
-    chatString: Sample dialogue end, thanks.
+    nameString: Hero
+    chatString: ...
     cutscenePreEvent:
+      m_PersistentCalls:
+        m_Calls: []
+    cutscenePostEvent:
+      m_PersistentCalls:
+        m_Calls: []
+  - name: Scene 4
+    charactersData:
+    - name: Walkie
+      initialTransformID: Left
+      finalTransformID: Left
+      spriteString: walkie_char
+    - name: Hero
+      initialTransformID: Right
+      finalTransformID: Right
+      spriteString: hero_char
+    propsData: []
+    nameString: Walkie
+    chatString: The academy where we don't teach you anything, and then we expect
+      you to know it already! <size=70%> it's kind of like real school... </size>
+    cutscenePreEvent:
+      m_PersistentCalls:
+        m_Calls: []
+    cutscenePostEvent:
       m_PersistentCalls:
         m_Calls:
         - m_Target: {fileID: 0}
-          m_TargetAssemblyTypeName: UnityEngine.AudioSource, UnityEngine
-          m_MethodName: PlayOneShot
+          m_TargetAssemblyTypeName: EcCutsceneTween, Assembly-CSharp
+          m_MethodName: TweenOut
           m_Mode: 2
           m_Arguments:
-            m_ObjectArgument: {fileID: 8300000, guid: 8c9f1e9ead130764ca1cf04c6fba1fe9,
-              type: 3}
-            m_ObjectArgumentAssemblyTypeName: UnityEngine.AudioClip, UnityEngine
+            m_ObjectArgument: {fileID: 6574975664442010490}
+            m_ObjectArgumentAssemblyTypeName: UnityEngine.UI.Image, UnityEngine.UI
             m_IntArgument: 0
             m_FloatArgument: 0
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 2
-    cutscenePostEvent:
-      m_PersistentCalls:
-        m_Calls: []
   currentID: 0
-  charaNameText: {fileID: 0}
-  chatText: {fileID: 0}
+  charaNameText: {fileID: 8463528962598750555}
+  chatText: {fileID: 8787427104453338927}
 --- !u!1 &6574975663169123864
 GameObject:
   m_ObjectHideFlags: 0
@@ -546,7 +524,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Name Text
+  m_text: 
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 17eedd5b500c0f0479c2057e7f55b241, type: 2}
   m_sharedMaterial: {fileID: -3481113185578378653, guid: 17eedd5b500c0f0479c2057e7f55b241,
@@ -667,8 +645,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   characterPrefabs:
-  - {fileID: 5402007523096397617, guid: 0db9b1d9698508f4ca7f8698b95ccc9e, type: 3}
-  - {fileID: 4877161689065050184, guid: ebf687764fe2f394c99b1cbb277cf7e5, type: 3}
+  - {fileID: 2943621380261865972, guid: 6a9ba07d945a7004292dddd1e3185b0f, type: 3}
+  - {fileID: 6919876982941197698, guid: ae1945aa977619942b7c6f494e371574, type: 3}
   propPrefabs: []
   cutscenes:
   - {fileID: 6574975663053359403}
@@ -681,27 +659,32 @@ MonoBehaviour:
   - name: Trunk Default
     position: {x: 0, y: -15, z: 0}
     rotation: {x: 0, y: 0, z: 0}
-    scale: {x: 2, y: 2, z: 2}
+    scale: {x: 1, y: 1, z: 1}
   - name: Left
-    position: {x: -5, y: -1, z: 0}
+    position: {x: -620, y: 0, z: 0}
     rotation: {x: 0, y: 0, z: 0}
-    scale: {x: 2, y: 2, z: 2}
+    scale: {x: 1, y: 1, z: 1}
   - name: Trunk Left
-    position: {x: -20, y: -1, z: 0}
+    position: {x: -1216, y: 0, z: 0}
     rotation: {x: 0, y: 0, z: 0}
-    scale: {x: 2, y: 2, z: 2}
+    scale: {x: 1, y: 1, z: 1}
   - name: Right
-    position: {x: 5, y: -1, z: 0}
+    position: {x: 620, y: 0, z: 0}
     rotation: {x: 0, y: 0, z: 0}
-    scale: {x: 2, y: 2, z: 2}
+    scale: {x: 1, y: 1, z: 1}
   - name: Trunk Right
-    position: {x: 20, y: -1, z: 0}
+    position: {x: 1216, y: 0, z: 0}
     rotation: {x: 0, y: 0, z: 0}
-    scale: {x: 2, y: 2, z: 2}
+    scale: {x: 1, y: 1, z: 1}
+  - name: Center
+    position: {x: 0, y: 0, z: 0}
+    rotation: {x: 0, y: 0, z: 0}
+    scale: {x: 1, y: 1, z: 1}
   guiPanel: {fileID: 6574975662670090747}
-  autoplayTime: 6
-  characterTransitionSpeed: 35
+  autoplayTime: -1
+  characterTransitionSpeed: 1300
   chatTypingDelay: 0.01
+  tweenTime: 0.5
 --- !u!1 &6574975664442010485
 GameObject:
   m_ObjectHideFlags: 0
