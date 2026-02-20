@@ -10038,42 +10038,42 @@ PrefabInstance:
         type: 3}
       propertyPath: m_CapsuleColliders.Array.data[0]
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1764239934}
     - target: {fileID: 5968105037922767128, guid: 006cadf70ed5d5742b718c44b2823295,
         type: 3}
       propertyPath: m_CapsuleColliders.Array.data[1]
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 2038856512}
     - target: {fileID: 5968105037922767128, guid: 006cadf70ed5d5742b718c44b2823295,
         type: 3}
       propertyPath: m_CapsuleColliders.Array.data[2]
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 4081255179117285288}
     - target: {fileID: 5968105037922767128, guid: 006cadf70ed5d5742b718c44b2823295,
         type: 3}
       propertyPath: m_CapsuleColliders.Array.data[3]
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 4081255179117285287}
     - target: {fileID: 5968105037922767128, guid: 006cadf70ed5d5742b718c44b2823295,
         type: 3}
       propertyPath: m_CapsuleColliders.Array.data[4]
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1228216490}
     - target: {fileID: 5968105037922767128, guid: 006cadf70ed5d5742b718c44b2823295,
         type: 3}
       propertyPath: m_CapsuleColliders.Array.data[5]
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1462665695}
     - target: {fileID: 5968105037922767128, guid: 006cadf70ed5d5742b718c44b2823295,
         type: 3}
       propertyPath: m_CapsuleColliders.Array.data[6]
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 952512822}
     - target: {fileID: 5968105037922767128, guid: 006cadf70ed5d5742b718c44b2823295,
         type: 3}
       propertyPath: m_CapsuleColliders.Array.data[7]
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1498935962}
     - target: {fileID: 5975229252700266780, guid: 006cadf70ed5d5742b718c44b2823295,
         type: 3}
       propertyPath: m_Layer
@@ -10307,13 +10307,11 @@ PrefabInstance:
     m_RemovedComponents:
     - {fileID: 2491299430336621455, guid: 006cadf70ed5d5742b718c44b2823295, type: 3}
     - {fileID: 6124343165969567012, guid: 006cadf70ed5d5742b718c44b2823295, type: 3}
-    - {fileID: 5263441698249771087, guid: 006cadf70ed5d5742b718c44b2823295, type: 3}
     - {fileID: 5094138205269072219, guid: 006cadf70ed5d5742b718c44b2823295, type: 3}
     - {fileID: 2763237056139242877, guid: 006cadf70ed5d5742b718c44b2823295, type: 3}
     - {fileID: 9006853276145162698, guid: 006cadf70ed5d5742b718c44b2823295, type: 3}
     - {fileID: 6089448421621450259, guid: 006cadf70ed5d5742b718c44b2823295, type: 3}
     - {fileID: 6765080166389175507, guid: 006cadf70ed5d5742b718c44b2823295, type: 3}
-    - {fileID: 8217903661830611166, guid: 006cadf70ed5d5742b718c44b2823295, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects:
     - targetCorrespondingSourceObject: {fileID: 2994967214979816919, guid: 006cadf70ed5d5742b718c44b2823295,
@@ -10462,6 +10460,18 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 1498935960}
   m_SourcePrefab: {fileID: 100100000, guid: 006cadf70ed5d5742b718c44b2823295, type: 3}
+--- !u!136 &4081255179117285287 stripped
+CapsuleCollider:
+  m_CorrespondingSourceObject: {fileID: 8217903661830611166, guid: 006cadf70ed5d5742b718c44b2823295,
+    type: 3}
+  m_PrefabInstance: {fileID: 4081255179117285286}
+  m_PrefabAsset: {fileID: 0}
+--- !u!136 &4081255179117285288 stripped
+CapsuleCollider:
+  m_CorrespondingSourceObject: {fileID: 5263441698249771087, guid: 006cadf70ed5d5742b718c44b2823295,
+    type: 3}
+  m_PrefabInstance: {fileID: 4081255179117285286}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &6377674982160490380
 PrefabInstance:
   m_ObjectHideFlags: 0
