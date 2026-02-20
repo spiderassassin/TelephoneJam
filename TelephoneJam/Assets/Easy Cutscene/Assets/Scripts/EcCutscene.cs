@@ -8,6 +8,7 @@ using HisaGames.TransformSetting;
 using HisaGames.CutsceneManager;
 using HisaGames.Props;
 using HisaGames.Character;
+using TMPro;
 
 namespace HisaGames.Cutscene
 {
@@ -87,11 +88,11 @@ namespace HisaGames.Cutscene
         [Header("Other Settings (no need to change)")]
         [SerializeField]
         [Tooltip("Text field for character names.")]
-        Text charaNameText;
+        TMP_Text charaNameText;
 
         [SerializeField]
         [Tooltip("Text field for chat text.")]
-        Text chatText;
+        TMP_Text chatText;
 
         [Tooltip("Full string of the chat text for the current cutscene.")]
         string chatTextString;
@@ -325,15 +326,32 @@ namespace HisaGames.Cutscene
         /// </summary>
         /// <param name="chatText">The UI text component where the typing effect is shown.</param>
         /// <param name="stringResult">The full string to display with the typing animation.</param>
-        void StartTypingAnimation(Text chatText, string stringResult)
+        void StartTypingAnimation(TMP_Text chatText, string stringResult)
         {
             typingTimer -= Time.deltaTime;
             if (typingTimer <= 0)
             {
                 if (chatText.text != stringResult || chatText.text.Length < stringResult.Length)
                 {
-                    chatText.text += stringResult[chatText.text.Length];
+                    if(stringResult[chatText.text.Length] == '<')
+                    {
+                        int endRTT = chatText.text.Length;
+                        for (int i = chatText.text.Length; i < stringResult.Length; i++)
+                        {
+                            if(stringResult[i] == '>')
+                            {
+                                endRTT = i+1;
+                                break;
+                            }
+                        }
+                        chatText.text += stringResult.Substring(chatText.text.Length, endRTT- chatText.text.Length);
+                    }
+                    else
+                    {
+                        chatText.text += stringResult[chatText.text.Length];
+                    }
                     typingTimer = EcCutsceneManager.instance.chatTypingDelay;
+
                 }
                 else
                 {

@@ -393,7 +393,7 @@ Canvas:
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
   m_VertexColorAlwaysGammaSpace: 0
-  m_AdditionalShaderChannelsFlag: 0
+  m_AdditionalShaderChannelsFlag: 25
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
   m_SortingOrder: 99
@@ -5512,8 +5512,18 @@ PrefabInstance:
         type: 3}
     - target: {fileID: 6574975663053359403, guid: 6056f01e95dfba646bc4cc2b3ad70de0,
         type: 3}
+      propertyPath: chatText
+      value: 
+      objectReference: {fileID: 1923654282}
+    - target: {fileID: 6574975663053359403, guid: 6056f01e95dfba646bc4cc2b3ad70de0,
+        type: 3}
+      propertyPath: charaNameText
+      value: 
+      objectReference: {fileID: 1492278180}
+    - target: {fileID: 6574975663053359403, guid: 6056f01e95dfba646bc4cc2b3ad70de0,
+        type: 3}
       propertyPath: cutsceneData.Array.size
-      value: 5
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 6574975663053359403, guid: 6056f01e95dfba646bc4cc2b3ad70de0,
         type: 3}
@@ -5574,7 +5584,7 @@ PrefabInstance:
         type: 3}
       propertyPath: cutsceneData.Array.data[3].chatString
       value: The academy where we don't teach you anything, and then we expect you
-        to know it already!
+        to know it already! <size=70%> it's kind of like real school... </size>
       objectReference: {fileID: 0}
     - target: {fileID: 6574975663053359403, guid: 6056f01e95dfba646bc4cc2b3ad70de0,
         type: 3}
@@ -5856,6 +5866,11 @@ PrefabInstance:
         type: 3}
       propertyPath: autoplayTime
       value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6574975663493176134, guid: 6056f01e95dfba646bc4cc2b3ad70de0,
+        type: 3}
+      propertyPath: currentCutscene
+      value: EcCutscene1
       objectReference: {fileID: 0}
     - target: {fileID: 6574975663493176134, guid: 6056f01e95dfba646bc4cc2b3ad70de0,
         type: 3}
@@ -7422,6 +7437,18 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1470863089}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1492278180 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8463528962598750555, guid: 6056f01e95dfba646bc4cc2b3ad70de0,
+    type: 3}
+  m_PrefabInstance: {fileID: 1080398667}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1498935957 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7208236819951751077, guid: 006cadf70ed5d5742b718c44b2823295,
@@ -7645,7 +7672,7 @@ MonoBehaviour:
   freeLookCamera: {fileID: 184126981}
   playerController: {fileID: 1279648281}
   icon: {fileID: 1953195585}
-  offscreenBottom: {x: 0, y: -380}
+  offscreenBottom: {x: 0, y: -420}
   coverCenter: {x: 0, y: -5.5}
   offscreenTop: {x: 0, y: 900}
   flyInTime: 0.35
@@ -9827,6 +9854,18 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 3dcda0c0904cc1d41b51106047409904, type: 3}
+--- !u!114 &1923654282 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8787427104453338927, guid: 6056f01e95dfba646bc4cc2b3ad70de0,
+    type: 3}
+  m_PrefabInstance: {fileID: 1080398667}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!43 &1941113236
 Mesh:
   m_ObjectHideFlags: 0
@@ -10026,7 +10065,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -384.2}
+  m_AnchoredPosition: {x: 0, y: -427}
   m_SizeDelta: {x: 420, y: 560}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1953195586
