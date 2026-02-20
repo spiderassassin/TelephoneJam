@@ -7,32 +7,45 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
-    public static GameManager Instance { get; private set; }
-    // public GameObject levelManagerPrefab;
-    // public LevelManager levelManager;
-
+    // public static GameManager Instance { get; private set; }
+    // From @kurtdekker
+    private static GameManager _Instance;
+    public static GameManager Instance
+    {
+        get
+        {
+            if (!_Instance)
+            {
+                _Instance = new GameObject().AddComponent<GameManager>();
+                // name it for easy recognition
+                _Instance.name = _Instance.GetType().ToString();
+                // mark root as DontDestroyOnLoad();
+                DontDestroyOnLoad(_Instance.gameObject);
+            }
+            return _Instance;
+        }
+    }
     // Intended for pausing the player controls.
     // (There might be some cases where you want to pause the movement AND the UI AND the game physics, but this is not inteded for that)
     [SerializeField] public bool playerPaused = false;
 
     [SerializeField] public int racesFinished = 0;
-    // [SerializeField] public bool playerPaused = false;
 
     [SerializeField] public int currentLevel = 1;
 
-    void Awake()
-    {
-        // Make Singleton
-        if (Instance == null)
-        {
-            Instance = this;
-            DontDestroyOnLoad(this);
-        }
-        else
-        {
-            Destroy(this);
-        }
-    }
+    // void Awake()
+    // {
+    //     // Make Singleton
+    //     if (Instance == null)
+    //     {
+    //         Instance = this;
+    //         DontDestroyOnLoad(this);
+    //     }
+    //     else
+    //     {
+    //         Destroy(this);
+    //     }
+    // }
 
     public void PausePlayerControls()
     {
@@ -68,5 +81,10 @@ public class GameManager : MonoBehaviour
     public void WinLevel()
     {
         GameWinUI.Instance.Show();
+    }
+
+    public void FinishedCutscenes()
+    {
+        FindAnyObjectByType<LevelManager>().conversationFinished = true;
     }
 }

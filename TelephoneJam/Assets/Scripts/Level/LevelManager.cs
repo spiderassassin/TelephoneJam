@@ -8,10 +8,12 @@ public class LevelManager : MonoBehaviour
     [Header("Current Stats")]
     public int racesFinished = 0;
     public int targetsDestroyed = 0;
+    public bool conversationFinished = false;
 
     [Header("Win Conditions")]
     public int racesFinishedToWin = 1;
     public int targetsDestroyedToWin = 0;
+    public bool conversationFinishedToWin = true;
 
 
 
@@ -22,10 +24,32 @@ public class LevelManager : MonoBehaviour
         
     }
 
+    public GameManager GetGameManager()
+    {
+        return GameManager.Instance;
+    }
+
+    public void UnpausePlayerControls()
+    {
+        GameManager.Instance.UnpausePlayerControls();
+    }
+
+    public void PausePlayerControls()
+    {
+        GameManager.Instance.PausePlayerControls();
+    }
+
+    public void PlayNextSequence()
+    {
+        GameManager.Instance.PlayNextSequence();
+    }
+
+
     public void CheckWinningConditions()
     {
         if ((racesFinished >= racesFinishedToWin)
-            && (targetsDestroyed >= targetsDestroyedToWin))
+            && (targetsDestroyed >= targetsDestroyedToWin)
+            && (conversationFinished == conversationFinishedToWin))
         {
             WinLevel();
         }
@@ -37,4 +61,10 @@ public class LevelManager : MonoBehaviour
     {
         GameManager.Instance.WinLevel();
     }
+
+    public void FinishedCutscenes()
+    {
+        GameManager.Instance.FinishedCutscenes();
+    }
+
 }
