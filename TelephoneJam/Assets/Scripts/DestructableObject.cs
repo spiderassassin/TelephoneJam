@@ -53,6 +53,8 @@ public class DestructibleObject : MonoBehaviour
         {
             gameObject.SetActive(false);
         }
+
+        FindAnyObjectByType<LevelManager>().targetsDestroyed++;
         
     }
     
