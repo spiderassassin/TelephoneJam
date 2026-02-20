@@ -6,6 +6,7 @@ using HisaGames.Cutscene;
 using HisaGames.Props;
 using HisaGames.Character;
 using System;
+using DG.Tweening;
 
 
 namespace HisaGames.CutsceneManager
@@ -52,6 +53,8 @@ namespace HisaGames.CutsceneManager
 
         [Tooltip("Delay between each character in chat typing (in seconds).")]
         public float chatTypingDelay;
+        
+        public float tweenTime = 0.5f;
 
         private void Awake()
         {
@@ -77,7 +80,7 @@ namespace HisaGames.CutsceneManager
                 // Debug.Log("/////////////");
                 temp.transform.SetParent(guiPanel.transform, false);
                 temp.transform.SetAsFirstSibling();
-                temp.GetComponent<RectTransform>().anchoredPosition = Vector3.zero;
+                temp.GetComponent<RectTransform>().anchoredPosition = new Vector2(-2000,0);
                 // Debug.Log(temp.transform.position);
                 // Debug.Log(temp.transform.localPosition);
                 // Debug.Log(temp.GetComponent<RectTransform>().anchoredPosition);
@@ -104,25 +107,41 @@ namespace HisaGames.CutsceneManager
         /// Initializes props by instantiating prefabs and storing them in the props array.
         /// </summary>
         /// 
-        public void closeCutscenes()
+        public void closeCutscenesInstant()
         {
+            guiPanel.GetComponent<CanvasGroup>().alpha = 0;
             guiPanel.SetActive(false);
             for (int i = 0; i < cutscenes.Length; i++)
             {
                 cutscenes[i].gameObject.SetActive(false);
             }
         }
+        public void closeCutscenes()
+        {
+            guiPanel.GetComponent<CanvasGroup>().DOFade(0, tweenTime).OnComplete(() =>
+            {
+                guiPanel.SetActive(false);
+                for (int i = 0; i < cutscenes.Length; i++)
+                {
+
+                    cutscenes[i].gameObject.SetActive(false);
+                }
+            });
+        }
         public void InitCutscenes(string cutsceneName)
         {
-            closeCutscenes();
+            closeCutscenesInstant();
 
             currentCutscene = cutsceneName;
             EcCutscene temp = getCutscenesObject(currentCutscene);
             if (temp != null)
             {
                 guiPanel.SetActive(true);
-                temp.gameObject.SetActive(true);
-                temp.StartCutscene();
+                guiPanel.GetComponent<CanvasGroup>().DOFade(1, tweenTime).OnComplete(()=>
+                {
+                    temp.gameObject.SetActive(true);
+                    temp.StartCutscene();
+                });
             }
         }
 

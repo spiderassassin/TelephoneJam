@@ -33,50 +33,72 @@ public class LaserFreakingVision : MonoBehaviour
 
     void Update()
     {
-        
+        if (!GameManager.Instance.playerPaused)
+        {
+            HandleLaser();
+        }
+        else
+        {
+            DisableLaser();
+        }
+
+    }
+
+    private void HandleLaser()
+    {
         if (Input.GetMouseButtonDown(0))
         {
-            _line1.enabled = true;
-            _line2.enabled = true;
-            _laserAudioSource.Play();
+            EnableLaser();
         }
 
         if (Input.GetMouseButtonUp(0))
         {
-            _line1.enabled = false;
-            _line2.enabled = false;
-            // cancel the laser sound
-            _laserAudioSource.Stop();
+            DisableLaser();
         }
-        
+
 
         if (_line1.enabled && _line2.enabled)
         {
-            Vector3 mouseWorldPosition = GetMouseWorldPosition();
+            ShootLaserAtMouse();
 
-            _line1.SetPosition(0, _line1.transform.InverseTransformPoint(transform.position));
-            _line1.SetPosition(1, _line1.transform.InverseTransformPoint(mouseWorldPosition));
-            
-            _line2.SetPosition(0, _line2.transform.InverseTransformPoint(transform.position));
-            _line2.SetPosition(1, _line2.transform.InverseTransformPoint(mouseWorldPosition));
-            
-            //TODO: ADD SFX HERE
-            
-            
-            if (laserHitEffectPrefab)
-            {
-                // spawn in an instance of the laser hit effect prefab at the mouse world position, so that its normal against the surface it hit
-                ParticleSystem temp = Instantiate(laserHitEffectPrefab, mouseWorldPosition, Quaternion.LookRotation(playerCamera.transform.forward));
-                Destroy(temp.gameObject, 0.35f);
-            }
-            
-            
         }
-        
-
     }
 
+    private void ShootLaserAtMouse()
+    {
+        Vector3 mouseWorldPosition = GetMouseWorldPosition();
 
+        _line1.SetPosition(0, _line1.transform.InverseTransformPoint(transform.position));
+        _line1.SetPosition(1, _line1.transform.InverseTransformPoint(mouseWorldPosition));
+
+        _line2.SetPosition(0, _line2.transform.InverseTransformPoint(transform.position));
+        _line2.SetPosition(1, _line2.transform.InverseTransformPoint(mouseWorldPosition));
+
+        //TODO: ADD SFX HERE
+
+
+        if (laserHitEffectPrefab)
+        {
+            // spawn in an instance of the laser hit effect prefab at the mouse world position, so that its normal against the surface it hit
+            ParticleSystem temp = Instantiate(laserHitEffectPrefab, mouseWorldPosition, Quaternion.LookRotation(playerCamera.transform.forward));
+            Destroy(temp.gameObject, 0.35f);
+        }
+    }
+
+    private void DisableLaser()
+    {
+        _line1.enabled = false;
+        _line2.enabled = false;
+        // cancel the laser sound
+        _laserAudioSource.Stop();
+    }
+
+    private void EnableLaser()
+    {
+        _line1.enabled = true;
+        _line2.enabled = true;
+        _laserAudioSource.Play();
+    }
 
     private Vector3 GetMouseWorldPosition()
     {

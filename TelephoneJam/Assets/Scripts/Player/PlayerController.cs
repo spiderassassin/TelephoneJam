@@ -82,7 +82,14 @@ public class PlayerController : MonoBehaviour
     {
         bool isFlying = Mathf.Abs(_velocity) > 1f || MoveVector.z != 0;
 
-        Fly();
+        if(!GameManager.Instance.playerPaused)
+        {
+            Fly();
+        }
+        else
+        {
+            DontFly();
+        }
         animator.SetFloat("flyingBlend", _velocity / (_maxSpeed / 2f)); 
         MainCamera.Instance.SetIsFlying(isFlying);
         MainCamera.Instance.PlayerTurnInput(_turnSmoothing.y);
