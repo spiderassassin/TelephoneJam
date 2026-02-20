@@ -64,6 +64,9 @@ GameObject:
   - component: {fileID: 3045704413516529620}
   - component: {fileID: 5622199147961960411}
   - component: {fileID: 5813052766724737583}
+  - component: {fileID: 479793668310055783}
+  - component: {fileID: 3063173707338256341}
+  - component: {fileID: 4652562367893532503}
   m_Layer: 0
   m_Name: Image
   m_TagString: Untagged
@@ -128,3 +131,56 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!95 &479793668310055783
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3580555157682918979}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 325dc00647475f6489578cd98022ba8b, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &3063173707338256341
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3580555157682918979}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 52c52f118f1f325469ec561277f4dbe2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &4652562367893532503
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3580555157682918979}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9ff0fa4eae21c084a9245f60185d904a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  audioClips:
+  - {fileID: 8300000, guid: d76f7192b96a60b4aa9df0a4daee8bff, type: 3}
+  - {fileID: 8300000, guid: 14b66ba23aa0ea944b0db103b4e2a099, type: 3}
+  - {fileID: 8300000, guid: 8cfdf2b1dc844804e92098c37fad01ad, type: 3}
+  - {fileID: 8300000, guid: e55711b2bdf05b04aaf40d76acb71ebf, type: 3}
+  - {fileID: 8300000, guid: cf9ad4dcb7ade184d84fbdf6329c7537, type: 3}
+  - {fileID: 8300000, guid: 651fd51d96cbd484bbd30be565994419, type: 3}
+  volume: 0.5

@@ -212,6 +212,7 @@ namespace HisaGames.Cutscene
         /// </summary>
         void ShowingCurrentCharacters()
         {
+            bool someoneIsTalking = false;
             //Showing & Play Character Animation on Movement on Cutscene
             for (int i = 0; i < cutsceneData[currentID].charactersData.Length; i++)
             {
@@ -261,15 +262,35 @@ namespace HisaGames.Cutscene
                     if (tempCharaData.spriteString != "")
                         character.ChangeSpriteByName(tempCharaData.spriteString);
 
+                    CharacterAnimatorHelper animationHelper = character.transform.gameObject.GetComponentInChildren<CharacterAnimatorHelper>();
+                    CharacterSFX characterSFX = character.transform.gameObject.GetComponentInChildren<CharacterSFX>();
                     if (character.name == cutsceneData[currentID].nameString)
+                    {
+                        if (animationHelper != null)
+                            animationHelper.SetTalking(true);
+                        if (characterSFX != null)
+                        {
+                            characterSFX.StopAudio();
+                            characterSFX.PlayRandomDialogueSFX();
+                            someoneIsTalking = true;
+                        }
                         character.image.color = Color.white; //set character sprite normal
+                    }
                     else
+                    {
+                        if (animationHelper != null)
+                            animationHelper.SetTalking(false);
                         character.image.color = Color.gray; //set character sprite normal
-                                                                     //-----------------------------------------------------------------------
+                    }
+                    //-----------------------------------------------------------------------
                 }
                 else
                 {
                     Debug.Log("There are no characters named with " + tempCharaData.name);
+                }
+                if(!someoneIsTalking)
+                {
+                    GameObject.FindGameObjectWithTag("Player").GetComponent<AudioSource>().Stop();
                 }
             }
         }
