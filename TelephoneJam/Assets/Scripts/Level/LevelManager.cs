@@ -5,6 +5,10 @@ using UnityEngine;
 
 public class LevelManager : MonoBehaviour
 {
+
+    // To get some better winning conditions and to add steps, another Dev could add a Scriptable Object with
+    // each different set of conditions. And after every set of conditions is done, you could do GameManager.Instance.PlayNextSequence()
+    // to trigger the next dialogue. Of course, this is just an idea, do whatever seems the most fun:)
     [Header("Current Stats")]
     public int racesFinished = 0;
     public int targetsDestroyed = 0;

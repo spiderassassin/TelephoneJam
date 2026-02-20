@@ -5,3 +5,4 @@ In general, you can just copy and paste what I did or look at the code. Sorry if
 
 
 PS. You have to name it the same as the Game Object for the "Grayed out when not talking" effect to occur in cutscenes.
+To call the next Cutscene you can do GameManager.Instance.PlayNextSequence();
