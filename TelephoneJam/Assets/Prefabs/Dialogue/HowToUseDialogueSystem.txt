@@ -1,0 +1,7 @@
+The Prefab that you need to use is called DialogueCanvas. Inside there is a gameObject called EasyCutscenes, you can configure the character prefabs (which will be instantiated, so you can add logic in the prefab as well, like "Walkie") and set the Cutscenes (They are conversations, you can add multiple in one Scene and call it one after the other). Finally, there are transform settings which are a instructions for the animations of the characters.
+The COOL part is the "EcCutscene1" gameObject. It is just an example of a conversation. You can see how to name the characters and how they can start in one position but move at the end, (you can see an example in the Scene "Level 1"). As I said you can add multiple Cutscenes (EcCutscene) but make sure you add the "EcCutscene" in the array and change the ID.
+
+In general, you can just copy and paste what I did or look at the code. Sorry if it's a bit hectic but I think it's mostly readable
+
+
+PS. You have to name it the same as the Game Object for the "Grayed out when not talking" effect to occur in cutscenes.

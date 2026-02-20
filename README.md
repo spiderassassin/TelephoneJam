@@ -44,3 +44,14 @@ Log
   * i love dotween THANK YOU FOR DOTWEEN DEV 2
   * i hope the stuff is useful! Have fun!! :3
   * I also also love flying
+
+* Notes for Dev 7
+  * MOST WORK WAS DONE IN LEVEL 1!!! Main Scene is behind
+  * Added a dialogue system (Easy Cutscene). It's a bit weird to use but I added a .txt inside Assets/Prefabs/Dialogue explaining how to use it.
+  * Added character prefabs to use in the dialogue system. Check out Walkie! I like how it turned out. You can use it as a base in case you want some characters that talk.
+  * Added a Level 1 with the start of a story, would be cool to see some other levels with other winning conditions (To set winning conditions you can modify the LevelManager instance in each level). For that one is just one race and the end of the conversations. (I also thought that it would be cool to add targets to destroy jejeje)
+  * Added a Game Win screen for the level. When clicking continue it takes you to the next numbered Level. (Game Manager is always saving the current level number)
+  * Had some problems because I used the GameManager singleton for some fields but it doesn't like it when changing levels >< Sorry about that. I've been using the LevelManager as a dummy GameManager and just copy the necessary methods.
+  * Implemented the unfinished audio files from Dev 5.
+  * Added more SLAY sound effects for walkie talking.
+  * Tried to fix the cape, I think it's a bit better??? Not sure how to make it perfect tho. I added the capsule colliders to the cloth back and reverted some lost colliders (Didnt see why they were removed so if it becomes crazy maybe delete "Chest" and "Spine 1" back)
