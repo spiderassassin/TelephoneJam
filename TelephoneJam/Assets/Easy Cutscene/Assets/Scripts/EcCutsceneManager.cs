@@ -5,6 +5,7 @@ using HisaGames.TransformSetting;
 using HisaGames.Cutscene;
 using HisaGames.Props;
 using HisaGames.Character;
+using System;
 
 
 namespace HisaGames.CutsceneManager
@@ -70,7 +71,16 @@ namespace HisaGames.CutsceneManager
             {
                 GameObject temp = Instantiate(characterPrefabs[i]);
                 temp.name = temp.name.Replace("(Clone)", "");
-                temp.transform.SetParent(guiPanel.transform);
+                // Debug.Log(temp.transform.position);
+                // Debug.Log(temp.transform.localPosition);
+                // Debug.Log(temp.GetComponent<RectTransform>().anchoredPosition);
+                // Debug.Log("/////////////");
+                temp.transform.SetParent(guiPanel.transform, false);
+                temp.transform.SetAsFirstSibling();
+                temp.GetComponent<RectTransform>().anchoredPosition = Vector3.zero;
+                // Debug.Log(temp.transform.position);
+                // Debug.Log(temp.transform.localPosition);
+                // Debug.Log(temp.GetComponent<RectTransform>().anchoredPosition);
                 characters[i] = temp.GetComponent<EcCharacter>();
             }
         }

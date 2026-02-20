@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using HisaGames.CutsceneManager;
+using UnityEngine.UI;
 
 
 namespace HisaGames.Character
@@ -20,12 +21,12 @@ namespace HisaGames.Character
         public CharacterState characterState;
 
         [Tooltip("Target position for the character when moving.")]
-        private Vector3 targetMovePosition;
+        private Vector2 targetMovePosition;
 
         [Header("Sprite Settings")]
         [HideInInspector]
-        [Tooltip("SpriteRenderer component for displaying character sprites.")]
-        public SpriteRenderer spriteRenderer;
+        [Tooltip("Image component for displaying character sprites.")]
+        public Image image;
 
         [Tooltip("Array of sprites used for the character.")]
         public Sprite[] spriteImages;
@@ -42,8 +43,8 @@ namespace HisaGames.Character
                 spriteDictionary[sprite.name] = sprite;
             }
 
-            // Get the sprite renderer component
-            spriteRenderer = GetComponentInChildren<SpriteRenderer>();
+            // Get the Image component
+            image = GetComponentInChildren<Image>();
         }
 
         /// <summary>
@@ -52,11 +53,11 @@ namespace HisaGames.Character
         /// <param name="spriteName">Name of the sprite to change to.</param>
         public void ChangeSpriteByName(string spriteName)
         {
-            if (spriteRenderer != null)
+            if (image != null)
             {
                 if (spriteDictionary.TryGetValue(spriteName, out var newSprite))
                 {
-                    spriteRenderer.sprite = newSprite;
+                    image.sprite = newSprite;
                 }
                 else
                 {
@@ -65,7 +66,7 @@ namespace HisaGames.Character
             }
             else
             {
-                Debug.LogWarning("spriteRenderer is null.");
+                Debug.LogWarning("image is null.");
             }
         }
 
@@ -79,9 +80,10 @@ namespace HisaGames.Character
             switch (characterState)
             {
                 case CharacterState.Moving:
-                    transform.position = Vector3.MoveTowards(transform.position, targetMovePosition, step);
+                    Debug.Log("Supposed to move");
+                    GetComponent<RectTransform>().anchoredPosition = Vector3.MoveTowards(GetComponent<RectTransform>().anchoredPosition, targetMovePosition, step);
 
-                    if (targetMovePosition == transform.position)
+                    if (targetMovePosition == GetComponent<RectTransform>().anchoredPosition)
                     {
                         characterState = CharacterState.StayInScene;
                         Debug.Log("Play StayInScene");
@@ -100,8 +102,9 @@ namespace HisaGames.Character
         /// <param name="transformType">Movement type (e.g., LeftIn, RightIn).</param>
         public void SetCharacterMove(Vector3 targetPosition, Vector3 targetRotation, Vector3 targetScale)
         {
-            targetMovePosition = targetPosition;
-            if (transform.position != targetMovePosition)
+            targetMovePosition = new Vector2(targetPosition.x, targetPosition.y);
+            Debug.Log("Current target Position:" + targetMovePosition.x + " and " + targetMovePosition.y);
+            if (transform.GetComponent<RectTransform>().anchoredPosition != targetMovePosition)
             {
                 characterState = CharacterState.Moving;
                 Debug.Log("Play Moving");
