@@ -121,6 +121,8 @@ namespace HisaGames.Cutscene
             startTyping = false;
             typingTimer = EcCutsceneManager.instance.chatTypingDelay;
 
+            GameManager.Instance.PausePlayerControls();
+
             PlayCutscene();
         }
 

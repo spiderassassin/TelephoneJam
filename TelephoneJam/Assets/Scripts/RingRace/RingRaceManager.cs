@@ -121,6 +121,7 @@ namespace RingRace
             {
                 if (FinishWinSFX != null) { audioSource.PlayOneShot(FinishWinSFX); } 
                 _player.GetComponent<PlayerStat>().HealHealth(1);
+                FindAnyObjectByType<LevelManager>().racesFinished++;
             }
             else
             {

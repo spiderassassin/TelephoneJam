@@ -62,6 +62,14 @@ public class GameFlowController : MonoBehaviour
         }
     }
 
+    void Update()
+    {
+        if(!started)
+        {
+            GameManager.Instance.PausePlayerControls();
+        }
+    }
+
     public void OnPlayPressed()
     {
         if (started) return;

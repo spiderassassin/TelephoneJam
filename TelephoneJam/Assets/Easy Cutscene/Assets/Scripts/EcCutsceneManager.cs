@@ -34,6 +34,7 @@ namespace HisaGames.CutsceneManager
         [Header("Cutscene Settings")]
         [Tooltip("Panel that contains cutscene elements.")]
         [SerializeField] EcCutscene[] cutscenes;
+        [SerializeField] int currentCutsceneIndex = 0;
 
         [Tooltip("Name of current active cutscene.")]
         [SerializeField] string currentCutscene;
@@ -74,16 +75,9 @@ namespace HisaGames.CutsceneManager
             {
                 GameObject temp = Instantiate(characterPrefabs[i]);
                 temp.name = temp.name.Replace("(Clone)", "");
-                // Debug.Log(temp.transform.position);
-                // Debug.Log(temp.transform.localPosition);
-                // Debug.Log(temp.GetComponent<RectTransform>().anchoredPosition);
-                // Debug.Log("/////////////");
                 temp.transform.SetParent(guiPanel.transform, false);
                 temp.transform.SetAsFirstSibling();
                 temp.GetComponent<RectTransform>().anchoredPosition = new Vector2(-2000,0);
-                // Debug.Log(temp.transform.position);
-                // Debug.Log(temp.transform.localPosition);
-                // Debug.Log(temp.GetComponent<RectTransform>().anchoredPosition);
                 characters[i] = temp.GetComponent<EcCharacter>();
             }
         }
@@ -114,6 +108,7 @@ namespace HisaGames.CutsceneManager
             for (int i = 0; i < cutscenes.Length; i++)
             {
                 cutscenes[i].gameObject.SetActive(false);
+                GameManager.Instance.UnpausePlayerControls();
             }
         }
         public void closeCutscenes()
@@ -125,6 +120,7 @@ namespace HisaGames.CutsceneManager
                 {
 
                     cutscenes[i].gameObject.SetActive(false);
+                    GameManager.Instance.UnpausePlayerControls();
                 }
             });
         }
@@ -214,6 +210,13 @@ namespace HisaGames.CutsceneManager
         public void PlayNextCutscene()
         {
             getCutscenesObject(currentCutscene).PlayNextCutscene();
+        }
+        // This code differentiates between Cutscene as 'a dialogue' and Sequence as 'multiple dialogues'.
+        // That's the difference here
+        public void PlayNextSequence()
+        {
+            InitCutscenes(cutscenes[currentCutsceneIndex].name);
+            currentCutsceneIndex++;
         }
     }
 }

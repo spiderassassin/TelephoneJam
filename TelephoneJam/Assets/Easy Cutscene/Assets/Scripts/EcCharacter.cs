@@ -103,7 +103,6 @@ namespace HisaGames.Character
         public void SetCharacterMove(Vector3 targetPosition, Vector3 targetRotation, Vector3 targetScale)
         {
             targetMovePosition = new Vector2(targetPosition.x, targetPosition.y);
-            Debug.Log("Current target Position:" + targetMovePosition.x + " and " + targetMovePosition.y);
             if (transform.GetComponent<RectTransform>().anchoredPosition != targetMovePosition)
             {
                 characterState = CharacterState.Moving;

@@ -1,5 +1,7 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using HisaGames.CutsceneManager;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -16,6 +18,8 @@ public class GameManager : MonoBehaviour
     [SerializeField] public int racesFinished = 0;
     // [SerializeField] public bool playerPaused = false;
 
+    [SerializeField] public int currentLevel = 1;
+
     void Awake()
     {
         // Make Singleton
@@ -30,13 +34,39 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    public void PausePlayerControls()
+    {
+        playerPaused = true;
+    }
+    public void UnpausePlayerControls()
+    {
+        playerPaused = false;
+    }
+
+    public void PlayNextSequence()
+    {
+        EcCutsceneManager.instance.PlayNextSequence();
+    }
+
     public void ChangeScene(string sceneName)
     {
         SceneManager.LoadScene(sceneName);
     }
 
+    public void NextLevel()
+    {
+        currentLevel++;
+        Debug.Log("Load Level " + currentLevel);
+        ChangeScene("Level " + currentLevel);
+    }
+
     public void ReloadScene()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
+
+    public void WinLevel()
+    {
+        GameWinUI.Instance.Show();
     }
 }
