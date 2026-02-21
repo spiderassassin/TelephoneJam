@@ -47,6 +47,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 455772620745479485}
+  - component: {fileID: 8991122334455667788}
+  - component: {fileID: 4929685371122334455}
   m_Layer: 0
   m_Name: City
   m_TagString: Untagged
@@ -84,6 +86,61 @@ Transform:
   - {fileID: 7217434001392170820}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &8991122334455667788
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1062966944454187273}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f6f2e9c6dfdd4a12b5ff4a6f0932f4df, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _excludedNamePrefixes:
+  - Floor
+  - PolyShape
+  - CAR
+  - TREE
+  _carvableRoot: {fileID: 455772620745479485}
+  _excludedRoots:
+  - {fileID: 1098676201788141320}
+  - {fileID: 2375695166711772436}
+  - {fileID: 7217434001392170820}
+  _maxBlocksPerCarve: 3
+  _minTimeBetweenCarves: 0.07
+--- !u!114 &4929685371122334455
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1062966944454187273}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 52efbe8d15f9491d95d17ec286f2f7f2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _excludedNamePrefixes:
+  - Floor
+  - PolyShape
+  - CAR
+  - TREE
+  - RuntimeChunks
+  _cityRoot: {fileID: 455772620745479485}
+  _voxelCarvable: {fileID: 8991122334455667788}
+  _excludedRoots:
+  - {fileID: 1098676201788141320}
+  - {fileID: 2375695166711772436}
+  - {fileID: 7217434001392170820}
+  _runtimeChunksContainerName: RuntimeChunks
+  _chunkSize: 1.5
+  _maxChunksPerBuilding: 2000
+  _autoScaleChunkSizeToChunkBudget: 1
+  _fillCombinedBounds: 1
+  _occupancyPadding: 0.2
+  _disableOriginalBuildingRoot: 1
 --- !u!1 &1086888954391241770
 GameObject:
   m_ObjectHideFlags: 0

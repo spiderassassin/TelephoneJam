@@ -60,3 +60,28 @@ Log
   * Dotween is so cool???? tweening is the thing I hate the most about programming and it worked prettty welllll.
   * Hopefully my work and the comments are helpfullllllll! I hope you enjoyyyy!<3
   * I also also also love flying
+
+##### Notes for Dev 8
+
+AHOY, Dev 8. Ye find yerself asea, adrift 'pon ye olde Sargasso! Judgin' by this here message ye might be thinkin' that this here game be a pirating adventure... AND YOU'D BE RIGHT! HAR HAR!... right at being WRONG, HAR! Ye scurvy cur! Perhaps ye best be rethinkin' those assumptions ye be making based on the inflection of ye olde messenger! Course, I best be rethinkin' me olde assumptions about yer assumptions... perhaps ye landlubbin' butt thought the game was but a classic flight simulator? well... YOU'D BE RIGHT! HAR HAR HAR!... kinda. Ye see, I spent me efforts in two, TWO key places: FLYIN' and DESTROYIN'!!!! YAR HAR HAR~!
+  * the flyin' feels GOOD now, AND IT'S ALL PARAMETERIZED, HAR HAR HAR!!!
+    * the Player prefab has two children objects, "Camera Space" and "PlayerModel"
+      * Camera Space has the Camera as a wee grandchild, to which is assigned a MainCamera script with a bunch o parameterrrrrs. Everything starting from "Neutral Return Speed" down affect how the camera responds to player movement. BE YE WARNED: behaviour be different if the player is moving forward or NOT moving forwarrrrrd.
+      * PlayerModel has assigned to it the PlayerController scrrrrrrript! It now has a whack a parameterrrs which control the player model's movement when flyin through the airrrrr. The model now dips, and banks, and turnrrrrrns~!
+    * The changes all ended up resultin' in the followin':
+      * player movement don't fizzle out no more: IF YE STOP, YE STOP!
+      * turnin' be responsive! the camera now moves to give yer eye some room to see where ye be goin'! HAR!
+      * same goes fer climbin' and descendin'
+      * the player model be rotatin' smoothly between orientations when flyin'! WHOOSH YAR HAR!
+      * RMB has been DECOUPLED from movement, but now let's ye look around!
+        * the laser eyes (OH THE LASERRRR EYES~!) aim even if ye be futzin' with the looky-loo rmb camerrrra fandangle~!
+      * camera smooooothly returns to be rrrrright behind the player if ye let go of control input or RMB!
+  * THE BUILDINS BE MINECRAFT AND YER EYE BEAMS BE YER PICKAXE! DESTRUCTION~! LOOTIN~!... okay no lootin, but flyin' through the hole ye make be right kick ass~!
+    * as with the changes above, this all be tunable via the VoxelCarvable and RuntimeBuildingChunker scripts attached to the City prefab!
+    * destructable objects are decided by ommission at runtime; see the excludedNamePrefixes strings in those scripts... maybe ye wanna make Level 2 be a LASER BEAM DESTRUCT-OTHON!
+
+Speakin' of Level 2... IT'S STILL THE SAME AS LEVEL 1! DIDN'T TOUCH IT! I was so into the DESTRUCTION that I happened ta DESTROY THE MAIN SCENE! GONE! POOF! BLAMMO! 'twas more broken than me leg in the Gargantuan Squid's beak when I was all but chum, lost at sea and caught in the Storm of Agamemnon!... quite a tale, that, BUT NOW'S NOT THE TIME! 
+
+We're here to talk about flyin' and blastin'... FLYIN'. AND. BLASTIN'! ARRRR HAR HAR HAR~!
+
+oh... the blastin' got NO SOUND YET! yar.

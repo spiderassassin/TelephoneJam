@@ -1659,13 +1659,30 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   camera: {fileID: 0}
+  cc: {fileID: 0}
   root: {fileID: 0}
-  modelRoot: {fileID: 6554656634746652747}
-  flyingSpeed: 35
   maxFloatHeight: 1000
   minFloatHeight: 1.5
   animator: {fileID: 6101261479743968129}
   currentHeight: 100
+  _maxSpeed: 15
+  _accel: 36
+  _nearbyBoostTime: 3
+  _wingTipParticles: []
+  _dashParticleSource: {fileID: 0}
+  _yawKeyboardInputScale: 1
+  _pitchTurnRate: 80
+  _yawTurnRate: 80
+  _rollVisualInputScale: 15
+  _climbSpeed: 6
+  _descendSpeed: 6
+  _climbResponse: 6
+  _descendResponse: 6
+  _forwardClimbPitchMax: 18
+  _forwardDescendPitchMax: 30
+  _forwardBankMax: 22
+  _forwardVisualResponse: 2
+  _forwardVisualBlendResponse: 4
 --- !u!114 &5955780471353599619
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1685,6 +1702,7 @@ MonoBehaviour:
   initialHealthUnitSpawnPoint: {fileID: 0}
   nextHealthUnitSpawnDist: 45
   spawnDelay: 0.1
+  healthPopup: {fileID: 0}
   HealthEffect: {fileID: 0}
   healthSpawnSFX: {fileID: 8300000, guid: 15570d5ffd32c05468637e69ef2d29ca, type: 3}
   playerDamageSFX: {fileID: 8300000, guid: e0505e1de85064b4e9079018fc710750, type: 3}
@@ -1834,12 +1852,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!1 &6554656634746652747 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1082271958561512970, guid: 3ea5f04adeea040208c8fa8bba3b54cc,
-    type: 3}
-  m_PrefabInstance: {fileID: 6193524704961599041}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &7151360216884429578 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 3948933247560734027, guid: 3ea5f04adeea040208c8fa8bba3b54cc,

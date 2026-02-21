@@ -9,7 +9,9 @@ public class LaserFreakingVision : MonoBehaviour
 
     [SerializeField] ParticleSystem laserHitEffectPrefab;
     [SerializeField] float laserDamage = 0.1f;
+    [SerializeField] float voxelCarveRadius = 1.25f;
     [SerializeField] AudioClip laserSFX;
+    [SerializeField] RuntimeBuildingChunker runtimeBuildingChunker;
     
     // Assign whichever camera is rendering your scene (usually Main Camera)
     public Camera playerCamera;
@@ -102,17 +104,27 @@ public class LaserFreakingVision : MonoBehaviour
 
     private Vector3 GetMouseWorldPosition()
     {
-        // Cast a ray from the camera through the mouse position into the scene
-        Ray ray = playerCamera.ScreenPointToRay(Input.mousePosition);
+        // A poem:
+        // While camera look locks the cursor, mousePosition becomes stale.
+        // In that mode, cast from screen center to keep the laser stable.
+        Vector3 aimScreenPoint = Cursor.lockState == CursorLockMode.Locked
+            ? new Vector3(Screen.width * 0.5f, Screen.height * 0.5f, 0f)
+            : Input.mousePosition;
+
+        // Cast a ray from the camera through the current aim point into the scene
+        Ray ray = playerCamera.ScreenPointToRay(aimScreenPoint);
 
         // If the ray hits something, use that hit point
         if (Physics.Raycast(ray, out RaycastHit hit))
         {
             Debug.DrawRay(ray.origin, ray.direction * hit.distance, Color.green);
-            // check if the thing we hit is a subclass of DestructibleObject
-            if (hit.collider.GetComponent<DestructibleObject>() != null)
+
+            if (!TryHandleVoxelCarve(hit))
             {
-                hit.collider.GetComponent<DestructibleObject>().TakeDamage(laserDamage);
+                if (hit.collider.TryGetComponent(out DestructibleObject destructibleObject))
+                {
+                    destructibleObject.TakeDamage(laserDamage);
+                }
             }
             return hit.point;
         }
@@ -121,5 +133,41 @@ public class LaserFreakingVision : MonoBehaviour
 
         // If nothing is hit, project the laser out a long distance
         return ray.GetPoint(100f);
+    }
+
+    private bool TryHandleVoxelCarve(RaycastHit hit)
+    {
+        VoxelCarvable voxelCarvable = hit.collider.GetComponentInParent<VoxelCarvable>();
+        if (voxelCarvable == null)
+        {
+            return false;
+        }
+
+        if (runtimeBuildingChunker == null)
+        {
+            runtimeBuildingChunker = hit.collider.GetComponentInParent<RuntimeBuildingChunker>();
+            if (runtimeBuildingChunker == null)
+            {
+                runtimeBuildingChunker = voxelCarvable.GetComponent<RuntimeBuildingChunker>();
+                if (runtimeBuildingChunker == null)
+                {
+                    runtimeBuildingChunker = voxelCarvable.gameObject.AddComponent<RuntimeBuildingChunker>();
+                }
+            }
+        }
+
+        if (hit.collider.TryGetComponent(out DestructibleChunk _))
+        {
+            voxelCarvable.CarveSphere(hit.point, voxelCarveRadius);
+            return true;
+        }
+
+        if (runtimeBuildingChunker != null && runtimeBuildingChunker.EnsureChunkedForHit(hit.collider, out _))
+        {
+            voxelCarvable.CarveSphere(hit.point, voxelCarveRadius);
+            return true;
+        }
+
+        return false;
     }
 }

@@ -280,8 +280,16 @@ MonoBehaviour:
   _maxZoom: 12
   _minAngle: -89
   _maxAngle: 89
+  _maxYawOffset: 45
   _zoomSpeed: 1
   _doubleClickTime: 0.25
+  _neutralReturnSpeed: 6
+  _passiveClimbPitchOffset: 8
+  _passiveDescendPitchOffset: 8
+  _passiveYawLeadOffset: 20
+  _passiveYawPanOffset: 2
+  _passiveYawPanResponse: 3
+  _passiveYawLeadResponse: 1
 --- !u!1001 &622349388830809613
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -612,9 +620,34 @@ PrefabInstance:
       objectReference: {fileID: 8244366934098205905}
     - target: {fileID: 8423886961195442456, guid: 5feffd789bfb3413b970c59c2ea956fc,
         type: 3}
+      propertyPath: _climbSpeed
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 8423886961195442456, guid: 5feffd789bfb3413b970c59c2ea956fc,
+        type: 3}
+      propertyPath: _descendSpeed
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 8423886961195442456, guid: 5feffd789bfb3413b970c59c2ea956fc,
+        type: 3}
+      propertyPath: _forwardBankMax
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 8423886961195442456, guid: 5feffd789bfb3413b970c59c2ea956fc,
+        type: 3}
       propertyPath: _dashParticleSource
       value: 
       objectReference: {fileID: 5975229252700266780}
+    - target: {fileID: 8423886961195442456, guid: 5feffd789bfb3413b970c59c2ea956fc,
+        type: 3}
+      propertyPath: _forwardVisualResponse
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 8423886961195442456, guid: 5feffd789bfb3413b970c59c2ea956fc,
+        type: 3}
+      propertyPath: _forwardVisualBlendResponse
+      value: 3
+      objectReference: {fileID: 0}
     - target: {fileID: 8423886961195442456, guid: 5feffd789bfb3413b970c59c2ea956fc,
         type: 3}
       propertyPath: _wingTipParticles.Array.size
