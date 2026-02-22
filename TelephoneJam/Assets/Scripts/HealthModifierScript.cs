@@ -12,21 +12,24 @@ public class HealthModifierScript : DestructibleObject
     public enum EffectType { Heal, Damage, SetMaxHealth }
     [SerializeField] EffectType effectType = EffectType.Heal;
 
-    
+
     [SerializeField] int amount = 1;
     [SerializeField] bool destroyOnUse = true; // if you want to destroy it after onTrigger
-    [SerializeField] bool shouldSpin = true; // if you want it to have a spinning animation
-    [SerializeField] float rotationSpeed = 50f; // the speed of the spinning animation
+    [SerializeField] bool shouldSpin = true; public bool GetShouldSpin() { return shouldSpin; } // if you want it to have a spinning animation
+    [SerializeField] float rotationSpeed = 50f; public float GetRotationSpeed() { return rotationSpeed; } // the speed of the spinning animation
 
 
     [SerializeField] float bobbingHeight = 0.3f;
     [SerializeField] float bobbingDuration = 0.8f;
     [SerializeField] int shakeVibrato = 10;
-    
+
     [Header("Ring Race Specifics")]
     [SerializeField, Tooltip("If you want this to appear/dissapear during a race. -1 means no race")] int ringRaceID = -1; public int GetRingRaceID() { return ringRaceID; }
 
-    void Start()
+
+
+
+    protected virtual void Start()
     {
         PlayIdleAnimation();
         if (ringRaceID != -1)
@@ -39,10 +42,10 @@ public class HealthModifierScript : DestructibleObject
     {
         transform.DOLocalMoveY(transform.localPosition.y + bobbingHeight, bobbingDuration)
             .SetEase(Ease.InOutSine).SetLoops(-1, LoopType.Yoyo).SetLink(gameObject); // bobbing effect
-        
+
         transform.DOShakeRotation(bobbingDuration, new Vector3(0, 0, 10f), shakeVibrato, 90)
             .SetLoops(-1, LoopType.Restart).SetLink(gameObject); // Rotating shake
-        
+
         if (shouldSpin)
         {
             Transform spinTarget = transform.parent != null ? transform.parent : transform;
@@ -56,11 +59,11 @@ public class HealthModifierScript : DestructibleObject
         // switching to disabling for race ones
         if (ringRaceID != -1)
         {
-            Die(shouldDestroy:false);
+            Die(shouldDestroy: false);
             return;
         }
 
-        Die(shouldDestroy:true);
+        Die(shouldDestroy: true);
     }
     public void OnTriggerEnter(Collider other)
     {
@@ -89,11 +92,11 @@ public class HealthModifierScript : DestructibleObject
         }
 
     }
-    
+
     // we will draw gizmos above pickups to show what raceID they belong to (only if its not -1)
     private void OnDrawGizmos()
     {
-        if (ringRaceID == -1){ return;}
+        if (ringRaceID == -1) { return; }
         GUIStyle style = new GUIStyle
         {
             normal = { textColor = Color.white },
@@ -104,7 +107,7 @@ public class HealthModifierScript : DestructibleObject
 
         string label = "RaceId: " + ringRaceID.ToString();
         Handles.Label(transform.position + Vector3.up * 0.75f, label, style);
-        
+
         // draw a line between the pickup, and the Start ring of the raceID it belongs to for better visualization
         HealthModifierScript[] pickups = FindObjectsOfType<HealthModifierScript>(true);
         foreach (HealthModifierScript pickup in pickups)

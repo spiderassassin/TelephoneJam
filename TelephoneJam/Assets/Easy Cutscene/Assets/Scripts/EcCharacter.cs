@@ -85,7 +85,7 @@ namespace HisaGames.Character
                     if (targetMovePosition == GetComponent<RectTransform>().anchoredPosition)
                     {
                         characterState = CharacterState.StayInScene;
-                        Debug.Log("Play StayInScene");
+                        //Debug.Log("Play StayInScene");
                     }
 
                     break;
@@ -105,7 +105,7 @@ namespace HisaGames.Character
             if (transform.GetComponent<RectTransform>().anchoredPosition != targetMovePosition)
             {
                 characterState = CharacterState.Moving;
-                Debug.Log("Play Moving");
+                //Debug.Log("Play Moving");
             }
         }
     }

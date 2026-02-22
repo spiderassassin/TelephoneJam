@@ -234,7 +234,7 @@ namespace HisaGames.Cutscene
 
                         if (charaInitialTransform != null)
                         {
-                            Debug.Log("Position Set");
+                            //Debug.Log("Position Set");
                             //Checking & Setting Initial Transform Position, Rotation, Scale Config
                             character.transform.localRotation = Quaternion.Euler(charaInitialTransform.rotation);
                             character.transform.localScale = charaInitialTransform.scale;
@@ -243,7 +243,7 @@ namespace HisaGames.Cutscene
                             //Checking & Setting Final Transform Position, Rotation, Scale Config
                             if (charaFinalTransform != null)
                             {
-                                Debug.Log("Position Move");
+                                //Debug.Log("Position Move");
                                 character.SetCharacterMove(
                                     charaFinalTransform.position,
                                     charaFinalTransform.rotation,
@@ -288,7 +288,7 @@ namespace HisaGames.Cutscene
                 {
                     Debug.Log("There are no characters named with " + tempCharaData.name);
                 }
-                if(!someoneIsTalking)
+                if (!someoneIsTalking)
                 {
                     GameObject.FindGameObjectWithTag("Player").GetComponent<AudioSource>().Stop();
                 }
@@ -356,18 +356,18 @@ namespace HisaGames.Cutscene
             {
                 if (chatText.text != stringResult || chatText.text.Length < stringResult.Length)
                 {
-                    if(stringResult[chatText.text.Length] == '<')
+                    if (stringResult[chatText.text.Length] == '<')
                     {
                         int endRTT = chatText.text.Length;
                         for (int i = chatText.text.Length; i < stringResult.Length; i++)
                         {
-                            if(stringResult[i] == '>')
+                            if (stringResult[i] == '>')
                             {
-                                endRTT = i+1;
+                                endRTT = i + 1;
                                 break;
                             }
                         }
-                        chatText.text += stringResult.Substring(chatText.text.Length, endRTT- chatText.text.Length);
+                        chatText.text += stringResult.Substring(chatText.text.Length, endRTT - chatText.text.Length);
                     }
                     else
                     {
