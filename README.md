@@ -85,3 +85,10 @@ Speakin' of Level 2... IT'S STILL THE SAME AS LEVEL 1! DIDN'T TOUCH IT! I was so
 We're here to talk about flyin' and blastin'... FLYIN'. AND. BLASTIN'! ARRRR HAR HAR HAR~!
 
 oh... the blastin' got NO SOUND YET! yar.
+
+
+### Final notes
+
+what a game!! really nice mechanics, if you have a 5090 you can see no squares at all, or that said the leyend I don't know tbh, well make my effort to put extra history to the mechanics! tried to spawn birds in all places but the frame drop whent really low maybe because found the prefavs and I don't get it anything about 3D so make it the most efficient and run it with constrains!! and it work now you have birds getting over your flying space!! you can laser those chickens but does a hero do that??
+
+the only thing that was not able to fix and maybe is because is 4am and my brain is liquid... o yea the reset button ... that is the only thing that need to be fix happy with the results and really well done all !!! 
