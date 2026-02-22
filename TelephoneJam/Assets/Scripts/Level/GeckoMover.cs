@@ -37,6 +37,10 @@ public class GeckoMover : MonoBehaviour
     [SerializeField] private AudioClip hitPlayerSfx;
     [SerializeField] private float hitVolume = 1f;
 
+    [Header("counter just because...")]
+    [SerializeField] private GeckoCounterSO counter;
+
+
 
     private int _i;
     private bool _moving;
@@ -181,11 +185,19 @@ public class GeckoMover : MonoBehaviour
         if (!other.CompareTag(playerTag)) return;
 
 
+
+
         if (hitPlayerSfx != null)
         {
             AudioSource.PlayClipAtPoint(hitPlayerSfx, transform.position);
         }
         Debug.Log("colision con el jugador....");
+
+
+        if (counter != null)
+            counter.AddOne();
+        else
+            Debug.LogError($"{name}: GeckoCollectable has no counter assigned.");
 
 
         AdvanceSegment();

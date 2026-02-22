@@ -121,7 +121,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _ringType: 0
   raceID: 0
-  RaceTimeLimit: 30
+  RaceTimeLimit: 120
   checkpointID: 0
   raceStartSFX: {fileID: 8300000, guid: a0b34da6e971c774f9d9a7ebfa7b6247, type: 3}
   volume: 1
