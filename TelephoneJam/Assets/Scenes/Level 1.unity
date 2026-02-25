@@ -11053,12 +11053,11 @@ PrefabInstance:
         type: 3}
       propertyPath: cutsceneData.Array.data[6].chatString
       value: '[W] and [S] to go forward and back. [A] and [D] to steer. [Space] to
-        ascend and [CTRL] to descend.
+        ascend and [Z] to descend.
 
-        Use [RMB] to change where you look.
-
-        When
-        you''re ready, just go through the green ring.'
+        Use [RMB] to change where you look. You
+        can also [DOUBLE RMB] to enter free cam flight.When you''re ready, just go
+        through the green ring.'
       objectReference: {fileID: 0}
     - target: {fileID: 393860129749461878, guid: 3393768c4e766c840a96bbb0afc10a76,
         type: 3}
