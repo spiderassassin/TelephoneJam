@@ -75,7 +75,7 @@ public class PlayerController : MonoBehaviour
 
     private Vector3 MoveVector => new Vector3(
         (Input.GetKey(KeyCode.D) ? 1 : 0) - (Input.GetKey(KeyCode.A) ? 1 : 0),
-        (Input.GetKey(KeyCode.Space) ? 1 : 0)  - (Input.GetKey(KeyCode.LeftControl) || Input.GetKey(KeyCode.RightControl) ? 1 : 0),
+        (Input.GetKey(KeyCode.Space) ? 1 : 0)  - (Input.GetKey(KeyCode.Z) || Input.GetKey(KeyCode.Z) ? 1 : 0),
         (Input.GetKey(KeyCode.W) ? 1 : 0) - (Input.GetKey(KeyCode.S) ? 1 : 0));
 
 

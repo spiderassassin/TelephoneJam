@@ -54,6 +54,8 @@ public class MainCamera : MonoBehaviour
     private float _passiveVerticalInput;
     private float _passiveYawInput;
     private float _passivePanX;
+    
+    private bool _freeFlightMode = false;
 
     private bool CameraInputEnabled => !GameManager.Instance.playerPaused;
     private bool Looking => CameraInputEnabled && (_isMouseLook || IsMouseDown);
@@ -138,9 +140,44 @@ public class MainCamera : MonoBehaviour
         _passivePanX = Mathf.Lerp(_passivePanX, targetPan, Time.deltaTime * _passiveYawPanResponse);
     }
 
+    private void TurnPlayer(float dx, float dy)
+    {
+        PlayerController.Instance.TryTurn(dx, dy);
+    }
     // Update is called once per frame
     void Update()
     {
+        
+        if(IsClicking)
+        {
+            if(Time.time - _doubleClickTimer < _doubleClickTime || _isMouseLook)
+            {
+                _isMouseLook = !_isMouseLook;
+                _freeFlightMode = !_freeFlightMode;
+                _doubleClickTimer = 0;
+            }
+            else
+            {
+                _doubleClickTimer = Time.time;
+            }
+        }
+        
+        // check which mode we are in
+        if(_freeFlightMode)
+        {
+            UpdateFreeFlightMode();
+        }
+        else
+        {
+            UpdateFlightMode();
+        }
+
+    }
+
+    private void UpdateFlightMode()
+    {
+                
+        
         if (!CameraInputEnabled)
         {
             _isMouseLook = false;
@@ -153,18 +190,7 @@ public class MainCamera : MonoBehaviour
             return;
         }
 
-        if(IsClicking)
-        {
-            if(Time.time - _doubleClickTimer < _doubleClickTime || _isMouseLook)
-            {
-                _isMouseLook = !_isMouseLook;
-                _doubleClickTimer = 0;
-            }
-            else
-            {
-                _doubleClickTimer = Time.time;
-            }
-        }
+
 
         // zoom
         float wheelDelta = Input.mouseScrollDelta.y;
@@ -174,6 +200,31 @@ public class MainCamera : MonoBehaviour
         ApplyMouseLook();
         ApplyNeutralRecentering();
         ApplyPassivePan();
+
+        
+        // _cameraVector += new Vector3(takeX, takeY);
+        // _cameraVector = new Vector3(Mathf.Clamp(_cameraVector.x, _minAngle, _maxAngle), _cameraVector.y, _cameraVector.z);
+
+        PositionCamera();
+
+        Cursor.lockState = Looking ? CursorLockMode.Locked : CursorLockMode.None;
+
+        _spaceOffsetCorrection = Mathf.Lerp(_spaceOffsetCorrection, _isFlying ? 1 : 0, Time.deltaTime * 6f);
+    }
+
+    private void UpdateFreeFlightMode()
+    {
+        // zoom
+        float wheelDelta = Input.mouseScrollDelta.y;
+        _wantedZoom = Mathf.Clamp(_wantedZoom - wheelDelta * _zoomSpeed, _minZoom, _maxZoom);
+        _cameraVector = new Vector3(_cameraVector.x, _cameraVector.y, Mathf.Lerp(_cameraVector.z, _wantedZoom, Time.deltaTime * 10f));
+
+        if(Looking)
+        {
+            float mouseX = Input.GetAxis("Mouse X") * 2f;
+            float mouseY = Input.GetAxis("Mouse Y") * 2f;
+            TurnPlayer(-mouseY, mouseX);
+        }
 
         
         // _cameraVector += new Vector3(takeX, takeY);
