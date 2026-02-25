@@ -41,7 +41,7 @@ public class MainCamera : MonoBehaviour
     private float _passiveYawLeadResponse = 4f;
 
     private float _doubleClickTimer = 0;
-    private bool _isMouseLook = false;
+    private bool _isMouseLook = false; public void SetMouseLook(bool value) { _isMouseLook = value; }
     private float _wantedZoom;
     private Vector3 _cameraVector; // x / y = xy rotation in degrees
 
@@ -55,7 +55,7 @@ public class MainCamera : MonoBehaviour
     private float _passiveYawInput;
     private float _passivePanX;
     
-    private bool _freeFlightMode = false;
+    private bool _freeFlightMode = false; public void SetFreeFlightMode(bool value) { _freeFlightMode = value; }
 
     private bool CameraInputEnabled => !GameManager.Instance.playerPaused;
     private bool Looking => CameraInputEnabled && (_isMouseLook || IsMouseDown);

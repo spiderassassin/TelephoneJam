@@ -93,6 +93,10 @@ namespace RingRace
         private void HandleFinishRing()
         {
             RingRaceManager.Instance.FinishedReached(this);
+            Cursor.visible = true;
+            Cursor.lockState = CursorLockMode.None;
+            MainCamera.Instance.SetFreeFlightMode(false);
+            MainCamera.Instance.SetMouseLook(false);
         }
                 
 
