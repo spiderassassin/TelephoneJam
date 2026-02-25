@@ -92,3 +92,9 @@ oh... the blastin' got NO SOUND YET! yar.
 what a game!! really nice mechanics, if you have a 5090 you can see no squares at all, or that said the leyend I don't know tbh, well make my effort to put extra history to the mechanics! tried to spawn birds in all places but the frame drop whent really low maybe because found the prefavs and I don't get it anything about 3D so make it the most efficient and run it with constrains!! and it work now you have birds getting over your flying space!! you can laser those chickens but does a hero do that??
 
 the only thing that was not able to fix and maybe is because is 4am and my brain is liquid... o yea the reset button ... that is the only thing that need to be fix happy with the results and really well done all !!! 
+
+### Final Pass from host
+* Bug fixes
+* Replaced rings with fancier rings
+* More sfx
+* Created levels for progression, there are 4 levels now.
