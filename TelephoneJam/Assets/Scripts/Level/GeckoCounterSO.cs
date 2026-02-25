@@ -6,8 +6,8 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "Game/Gecko Counter", fileName = "GeckoCounter")]
 public class GeckoCounterSO : ScriptableObject
 {
-    [SerializeField] private int _required = 5;
-    [SerializeField] private int _collected = 0;
+    [SerializeField] public int _required = 5;
+    [SerializeField] public int _collected = 0;
 
     // Fires exactly once when collected reaches required.
     public event System.Action OnGoalReached;

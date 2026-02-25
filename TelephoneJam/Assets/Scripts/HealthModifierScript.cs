@@ -94,7 +94,7 @@ public class HealthModifierScript : DestructibleObject
     }
 
     // we will draw gizmos above pickups to show what raceID they belong to (only if its not -1)
-    private void OnDrawGizmos()
+    /*private void OnDrawGizmos()
     {
         if (ringRaceID == -1) { return; }
         GUIStyle style = new GUIStyle
@@ -138,5 +138,5 @@ public class HealthModifierScript : DestructibleObject
                 }
             }
         }
-    }
+    }*/
 }

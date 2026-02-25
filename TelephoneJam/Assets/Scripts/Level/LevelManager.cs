@@ -47,10 +47,10 @@ public class LevelManager : MonoBehaviour
         if (geckoCounter != null)
             geckoCounter.ResetCount();
 
-        if (RingRaceManager.Instance != null)
+        /*if (RingRaceManager.Instance != null)
             RingRaceManager.Instance.ResetAllRaces();
         else
-            Debug.LogWarning("LevelManager: RingRaceManager.Instance is null at Start().");
+            Debug.LogWarning("LevelManager: RingRaceManager.Instance is null at Start().");*/
 
         if (finishRing == null)
             Debug.LogWarning($"{name}: Finish ring is not assigned .....");

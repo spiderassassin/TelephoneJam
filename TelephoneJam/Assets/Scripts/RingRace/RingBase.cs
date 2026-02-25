@@ -96,7 +96,7 @@ namespace RingRace
         }
                 
 
-        private void OnDrawGizmos()
+        /*private void OnDrawGizmos()
         {
             GUIStyle style = new GUIStyle
             {
@@ -136,7 +136,7 @@ namespace RingRace
                 Gizmos.color = Color.blue;
                 Gizmos.DrawLine(transform.position, nextRing.transform.position);
             }
-        }
+        }*/
         
 
         

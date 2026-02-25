@@ -34,6 +34,7 @@ public class PlayerStat : MonoBehaviour
 
     [SerializeField] AudioClip healthSpawnSFX;
     [SerializeField] AudioClip playerDamageSFX;
+    [SerializeField] AudioClip playerDeathSFX;
     AudioSource audioSource;
     
 
@@ -102,8 +103,14 @@ public class PlayerStat : MonoBehaviour
     {
         //TODO: Another dev (TWAS DEV 5!) prolly gotta hook this up to some sort of Game Manager to handle respawns or resets
         PlayerRagdoll.Instance.ActivateRagdoll(); //This also needs to have its camera fixed.. unless we like it LOL
+        audioSource.PlayOneShot(playerDeathSFX);
 
         // me likey the way it FLIES LMAOOO
+        StartCoroutine(ShowUI());
+
+    }
+    public IEnumerator ShowUI(){
+        yield return new WaitForSeconds(2f);
         GameOverUI.Instance?.Show();
 
     }

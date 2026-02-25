@@ -27,6 +27,7 @@ namespace RingRace
         private TMP_Text _timeRemainingText;
         private TMP_Text _timeRemainingShadowText;
         
+        
         private void Start()
         {
             // find the child of this object with the name "TMP_TimeRemaining" and get the TMP_Text component from it, and store it in _timeRemainingText

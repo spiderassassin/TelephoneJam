@@ -64,6 +64,11 @@ public class PlayerController : MonoBehaviour
     [SerializeField]
     private float _forwardVisualBlendResponse = 8f;
 
+    [SerializeField]
+    private AudioSource flying;
+
+    
+
     private float _flyDownBoost = 1.0f;
 
 
@@ -78,6 +83,7 @@ public class PlayerController : MonoBehaviour
     void Awake()
     {
         Instance = this;
+        
     }
 
     void Start()
@@ -99,6 +105,15 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         bool isFlying = Mathf.Abs(_velocity) > 1f || MoveVector.z != 0;
+        if(isFlying){
+            if(!flying.isPlaying){
+                flying.Play();
+            }
+        }
+        else
+        {
+            flying.Stop();
+        }
 
         if(!GameManager.Instance.playerPaused)
         {

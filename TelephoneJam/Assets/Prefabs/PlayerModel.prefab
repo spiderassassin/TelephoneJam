@@ -1260,6 +1260,8 @@ Cloth:
   - {fileID: 7806125330276043622}
   - {fileID: 7538690934803828116}
   - {fileID: 2229872794527427391}
+  - {fileID: 2229872794527427391}
+  - {fileID: 2229872794527427391}
   m_SphereColliders: []
   m_SelfCollisionDistance: 0
   m_SelfCollisionStiffness: 0.2
@@ -1683,6 +1685,7 @@ MonoBehaviour:
   _forwardBankMax: 22
   _forwardVisualResponse: 2
   _forwardVisualBlendResponse: 4
+  flying: {fileID: 0}
 --- !u!114 &5955780471353599619
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1706,6 +1709,7 @@ MonoBehaviour:
   HealthEffect: {fileID: 0}
   healthSpawnSFX: {fileID: 8300000, guid: 15570d5ffd32c05468637e69ef2d29ca, type: 3}
   playerDamageSFX: {fileID: 8300000, guid: e0505e1de85064b4e9079018fc710750, type: 3}
+  playerDeathSFX: {fileID: 0}
 --- !u!54 &5933218437126143048
 Rigidbody:
   m_ObjectHideFlags: 0
